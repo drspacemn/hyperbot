@@ -2,22 +2,32 @@
 angular.module('App').controller('chatController', function ($scope,  $firebaseArray, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup,  $timeout, $firebaseObject, $ionicScrollDelegate, Auth, FURL, Utils, Messages) {
   $scope.hideTime = true;
 
-  var messages = Messages.getMessages();
+  // var messages = Messages.getMessages();
 	$scope.messages = [];
 
 
 	var ref = firebase.database().ref();
-	ref.child("messages").on("value", function(snapshot) {
+
+  ref.child("messages").on("value", function(snapshot) {
 		$scope.messages = [];
 		var snap = snapshot.val();
 		for(var key in snap){
 				$scope.messages.push(snap[key])
-		}
+		    }
+    })
 
-		$scope.$apply();
-		$ionicScrollDelegate.scrollBottom(true);
+    $scope.$watch('messages', function(a, b){
+        $state.reload();
+        $ionicScrollDelegate.scrollBottom(true);
+    })
 
-	});
+    $scope.bodyFocus = function(){
+      $state.reload();
+    }
+
+
+
+	// });
 
   var alternate,
     isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
@@ -61,8 +71,6 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
 
   $scope.data = {};
   $scope.myId = '12345';
-
-
 })
 
 // All this does is allow the message
