@@ -17,9 +17,6 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
-    <link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
-    <script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
-    
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="views/login/login.js"></script>
@@ -29,6 +26,7 @@
     <script src="views/chat/chat.js"></script>
     <script src="js/services/auth.js"></script>
     <script src="js/services/utils.js"></script>
+    <script src="js/services/messages.js" charset="utf-8"></script>
 
     <!-- libraries -->
     <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
@@ -47,7 +45,7 @@
   </head>
 
   <body ng-app="App">
-    <ion-nav-bar class="bar-positive">
+    <ion-nav-bar class="bar-dark">
       <ion-nav-back-button class="button-icon ion-arrow-left-c">
       </ion-nav-back-button>
     </ion-nav-bar>

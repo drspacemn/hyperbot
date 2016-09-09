@@ -13,9 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-html, body {
-  font-family: 'Roboto', 'Helvetica', sans-serif;
+@font-face {
+   font-family: cliqueFont;
+   src: url(../fonts/SWATRG_.TTF);
+}
+html, body, h1 {
+  font-family: 'cliqueFont';
 }
 main, #messages-card {
   height: 100%;
@@ -199,6 +202,17 @@ main, #messages-card {
   top: -1px;
   margin-right: 5px;
 }
+.logo{
+  width: 80%;
+  height: 40%;
+  margin-bottom: 27%;
+  margin-top: 10%;
+}
+.logoutButton{
+  margin-top: 50%;
+}
+.chatsButton{
+  margin-bottom: 30px;
 
 $stable: #f8f8f8 !default;
 
@@ -277,7 +291,7 @@ $stable: #f8f8f8 !default;
     background-color: #C7C7CC !important;
   }
 }
-span {
+.messageSpan {
   background: #007AFF !important;
   display: inline-block !important;
   color: white !important;
