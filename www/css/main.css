@@ -17,7 +17,7 @@
    font-family: cliqueFont;
    src: url(../fonts/SWATRG_.TTF);
 }
-html, body, h1 {
+html, body, h1, h2, h3 {
   font-family: 'cliqueFont';
 }
 main, #messages-card {
@@ -205,14 +205,9 @@ main, #messages-card {
 .logo{
   width: 80%;
   height: 40%;
-  margin-bottom: 27%;
+  margin-bottom: 20%;
   margin-top: 10%;
 }
-.logoutButton{
-  margin-top: 50%;
-}
-.chatsButton{
-  margin-bottom: 30px;
 
 $stable: #f8f8f8 !default;
 
@@ -299,4 +294,7 @@ $stable: #f8f8f8 !default;
   border-radius: 10px !important;
   text-align: left !important;
   max-width: 240px !important;
+}
+.profilePic{
+  width: 80%;
 }
