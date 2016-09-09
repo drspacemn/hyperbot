@@ -7,18 +7,15 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
 
   var userkey = "";
   $scope.signIn = function (user) {
-    $log.log("Enviado");
     if(angular.isDefined(user)){
     Utils.show();
-    Auth.login(user)
-      .then(function(authData) {
-
-      $log.log("id del usuario:" + authData);
+    Auth.login(user).then(function(authData) {
+      $log.log(user)
+      $log.log("Auth Data");
+      $log.log(authData);
       //$localStorage.profile = user.email;
        Utils.hide();
       $state.go('home');
-      $log.log("Starter page","Home");
-
       }, function(err) {
         Utils.hide();
          Utils.errMessage(err);
