@@ -14,6 +14,7 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
 				$scope.messages.push(snap[key])
 		}
 		$scope.$apply();
+		$ionicScrollDelegate.scrollBottom(true);
 	});
 
   var alternate,
@@ -24,8 +25,9 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
 
     var d = new Date();
   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
-
-
+		var obj = {}
+		obj.text = $scope.data.message;
+		ref.child("messages").push(obj);
 
     delete $scope.data.message;
     $ionicScrollDelegate.scrollBottom(true);
@@ -34,6 +36,7 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
 // 	firebase.child("location/city").on("value", function(snapshot) {
 //   alert(snapshot.val());  // Alerts "San Francisco"
 // });
+
 
 
   $scope.inputUp = function() {
