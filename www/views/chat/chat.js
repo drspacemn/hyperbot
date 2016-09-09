@@ -12,20 +12,16 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
 		for(var key in snap){
 				$scope.messages.push(snap[key])
 		    }
-    })
 
-    $scope.$watch('messages', function(a, b){
-        $state.reload();
-        $ionicScrollDelegate.scrollBottom(true);
-    })
+    $scope.$apply();
+    $ionicScrollDelegate.scrollBottom(true);
 
-    $scope.bodyFocus = function(){
-      $state.reload();
-    }
+  });
 
-
-
-	// });
+    // $scope.$watch('messages', function(a, b){
+    //   $scope.
+    //   $ionicScrollDelegate.scrollBottom(true);
+    // })
 
   var alternate,
     isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
