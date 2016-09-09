@@ -1,25 +1,28 @@
 'Use Strict';
-angular.module('App').controller('chatController', function ($scope,  $firebaseArray, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup,  $timeout, $firebaseObject, $ionicScrollDelegate, Auth, FURL, Utils, Messages) {
+angular.module('App').controller('chatController', function ($scope, $rootScope, $timeout, $firebaseArray, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup,  $timeout, $firebaseObject, $ionicScrollDelegate, Auth, FURL, Utils, Messages) {
   $scope.hideTime = true;
 
 	$scope.messages = [];
+	$timeout(function(){
+				if($location.url() === '/chat'){
+				$ionicScrollDelegate.scrollBottom(true);
+			}
+		})
+
 
 	var ref = firebase.database().ref();
 
-  ref.child("messages").on("value", function(snapshot) {
-		$scope.messages = [];
-		var snap = snapshot.val();
-		for(var key in snap){
-				$scope.messages.push(snap[key])
-		    }
-    })
+	ref.child("messages").on("value", function(snapshot) {
+	        $scope.messages = [];
+	        var snap = snapshot.val();
+	        for(var key in snap){
+	                $scope.messages.push(snap[key])
+	        }
 
-    $scope.$watch('messages', function(a, b){
-        $scope.$apply();
-        $ionicScrollDelegate.scrollBottom(true);
-    })
+	    $rootScope.$$phase ||  $scope.$apply()
+	    $ionicScrollDelegate.scrollBottom(true);
 
-
+	    });
 
 	// });
 
