@@ -15,13 +15,9 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
     })
 
     $scope.$watch('messages', function(a, b){
-        $state.reload();
+        $scope.$apply();
         $ionicScrollDelegate.scrollBottom(true);
     })
-
-    $scope.bodyFocus = function(){
-      $state.reload();
-    }
 
 
 
