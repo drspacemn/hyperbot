@@ -277,7 +277,7 @@ $stable: #f8f8f8 !default;
     background-color: #C7C7CC !important;
   }
 }
-span {
+.messageSpan {
   background: #007AFF !important;
   display: inline-block !important;
   color: white !important;

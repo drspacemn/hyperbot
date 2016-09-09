@@ -1,7 +1,8 @@
 'Use Strict';
-angular.module('App').controller('chatController', function ($scope, $state,$cordovaOauth, $localStorage, $location, $http, $ionicPopup,  $timeout, $firebaseObject, $ionicScrollDelegate, Auth, FURL, Utils) {
+angular.module('App').controller('chatController', function ($scope, $state,$cordovaOauth, $localStorage, $location, $http, $ionicPopup,  $timeout, $firebaseObject, $ionicScrollDelegate, Auth, FURL, Utils, Messages) {
   $scope.hideTime = true;
-
+  var messages = Messages.getMessages();
+  console.log(messages);
   var alternate,
     isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
 
