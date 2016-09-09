@@ -4,6 +4,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
   var auth = $firebaseAuth();
   //firebase.initializeApp(FURL);
   var ref = firebase.database().ref();
+
   var userkey = "";
   $scope.signIn = function (user) {
     $log.log("Enviado");
@@ -11,7 +12,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
     Utils.show();
     Auth.login(user)
       .then(function(authData) {
-      
+
       $log.log("id del usuario:" + authData);
       //$localStorage.profile = user.email;
        Utils.hide();
@@ -24,7 +25,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
       });
     }
   };
-  
+
 /* SEEMS NOT WORKING WELL
 
   $scope.loginWithGoogle =  function(){
@@ -34,7 +35,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
 
     $log.log("Authenticated successfully with payload:", angular.toJson(result));
     $state.go('home');
-  
+
   })
   .catch(function(error) {
   // Handle Errors here.
@@ -60,7 +61,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
 
     $log.log("Authenticated successfully with payload:", angular.toJson(result));
     $state.go('home');
-  
+
   })
   .catch(function(error) {
   // Handle Errors here.
@@ -76,7 +77,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
   ;
   };
   */
-  
+
 /* SEEMS NOT WORKING WELL
   $scope.loginWithTwitter =  function(){
     var provider = new firebase.auth.FacebookAuthProvider();
@@ -85,7 +86,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
 
     $log.log("Authenticated successfully with payload:", angular.toJson(result));
     $state.go('home');
-  
+
   })
   .catch(function(error) {
   // Handle Errors here.
