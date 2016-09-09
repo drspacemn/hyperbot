@@ -2,9 +2,7 @@
 angular.module('App').controller('chatController', function ($scope,  $firebaseArray, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup,  $timeout, $firebaseObject, $ionicScrollDelegate, Auth, FURL, Utils, Messages) {
   $scope.hideTime = true;
 
-  // var messages = Messages.getMessages();
 	$scope.messages = [];
-
 
 	var ref = firebase.database().ref();
 
@@ -36,7 +34,7 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
     alternate = !alternate;
 
     var d = new Date();
-  d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+    d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
 		var obj = {}
 		obj.text = $scope.data.message;
 		ref.child("messages").push(obj);
@@ -67,7 +65,6 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
   $scope.closeKeyboard = function() {
     // cordova.plugins.Keyboard.close();
   };
-
 
   $scope.data = {};
   $scope.myId = '12345';
