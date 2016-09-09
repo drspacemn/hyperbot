@@ -45,3 +45,20 @@ label.item.valid-lr {
         margin: 30px auto 0;
         box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
       }
+.profileText {
+  padding: 8%;
+  margin-bottom: 23%;
+}
+.chatSearch{
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 27%;
+  margin-top: 5%;
+}
+.chatsButton{
+  width: 50%;
+}
+.profileButton{
+  margin-left: 20%;
+  margin-right: 5%;
+}

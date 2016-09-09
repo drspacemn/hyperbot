@@ -4,7 +4,7 @@ angular.module('App').factory('Messages', function(FURL, $log, $firebaseAuth, $f
 	var Messages = {
 
 		getMessages: function() {
-			var messages = msg.val()
+			var messages = msg
 			$log.log(messages);
 			return messages
 		},

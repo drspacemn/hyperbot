@@ -1,8 +1,23 @@
 'Use Strict';
-angular.module('App').controller('chatController', function ($scope, $state,$cordovaOauth, $localStorage, $location, $http, $ionicPopup,  $timeout, $firebaseObject, $ionicScrollDelegate, Auth, FURL, Utils, Messages) {
+angular.module('App').controller('chatController', function ($scope,  $firebaseArray, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup,  $timeout, $firebaseObject, $ionicScrollDelegate, Auth, FURL, Utils, Messages) {
   $scope.hideTime = true;
+
   var messages = Messages.getMessages();
-  console.log(messages);
+	$scope.messages = [];
+
+
+	var ref = firebase.database().ref();
+	ref.child("messages").on("value", function(snapshot) {
+		$scope.messages = [];
+		var snap = snapshot.val();
+		for(var key in snap){
+				$scope.messages.push(snap[key])
+		}
+
+		$scope.$apply();
+    $ionicScrollDelegate.scrollBottom(true);
+	});
+
   var alternate,
     isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
 
@@ -12,16 +27,15 @@ angular.module('App').controller('chatController', function ($scope, $state,$cor
     var d = new Date();
   d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
 
-    $scope.messages.push({
-      userId: alternate ? '12345' : '54321',
-      text: $scope.data.message,
-      time: d
-    });
+
 
     delete $scope.data.message;
     $ionicScrollDelegate.scrollBottom(true);
 
   };
+// 	firebase.child("location/city").on("value", function(snapshot) {
+//   alert(snapshot.val());  // Alerts "San Francisco"
+// });
 
 
   $scope.inputUp = function() {
@@ -44,7 +58,8 @@ angular.module('App').controller('chatController', function ($scope, $state,$cor
 
   $scope.data = {};
   $scope.myId = '12345';
-  $scope.messages = [];
+
+
 })
 
 // All this does is allow the message
