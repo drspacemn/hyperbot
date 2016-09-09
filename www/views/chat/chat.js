@@ -13,7 +13,9 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
 		for(var key in snap){
 				$scope.messages.push(snap[key])
 		}
+
 		$scope.$apply();
+    $ionicScrollDelegate.scrollBottom(true);
 	});
 
   var alternate,
