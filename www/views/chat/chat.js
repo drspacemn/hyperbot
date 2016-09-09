@@ -5,17 +5,27 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
 	$scope.messages = [];
 
 	var ref = firebase.database().ref();
-	ref.child("messages").on("value", function(snapshot) {
+
+  ref.child("messages").on("value", function(snapshot) {
 		$scope.messages = [];
 		var snap = snapshot.val();
 		for(var key in snap){
 				$scope.messages.push(snap[key])
-		}
+		    }
+    })
 
-		$scope.$apply();
-		$ionicScrollDelegate.scrollBottom(true);
+    $scope.$watch('messages', function(a, b){
+        $state.reload();
+        $ionicScrollDelegate.scrollBottom(true);
+    })
 
-	});
+    $scope.bodyFocus = function(){
+      $state.reload();
+    }
+
+
+
+	// });
 
   var alternate,
     isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
