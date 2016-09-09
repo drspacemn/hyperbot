@@ -21,6 +21,8 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
     isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
 
   $scope.sendMessage = function() {
+		if($scope.data.message){
+
     alternate = !alternate;
 
     var d = new Date();
@@ -32,6 +34,7 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
     delete $scope.data.message;
     $ionicScrollDelegate.scrollBottom(true);
 
+		}
   };
 // 	firebase.child("location/city").on("value", function(snapshot) {
 //   alert(snapshot.val());  // Alerts "San Francisco"
