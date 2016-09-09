@@ -29,6 +29,11 @@ angular.module('App', ['ionic', 'ngStorage', 'ngCordova', 'firebase', 'pascalpre
 				templateUrl: 'views/home/home.html',
 				controller: 'homeController'
 			})
+			.state('profile', {
+				url: '/profile',
+				templateUrl: 'views/profile/profile.html',
+				controller: 'profileController'
+			})
       .state('chat',{
         url:'/chat',
         templateUrl: 'views/chat/chat.html',
