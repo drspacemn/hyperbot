@@ -15,7 +15,9 @@
         "pass_field": "Password",
         "signin_message": "Login",
         "forgot_message": "Forgot Password?",
-        "join_message": "Join Now"
+        "join_message": "Join Now",
+        "first_name" : "First Name",
+        "last_name" : "Last Name"
     },
     "FORGOT": {
         "text_title": "Forgot Password",
@@ -38,6 +40,8 @@
         "register_pass_maxlength": "This field is must be at least 5 characters.",
         "register_pass_minlength": "This field is must be less than 30 characters.",
         "register_pass_pattern": "This field is should contain only letters and numbers",
+        "register_first_name": "Please Enter your First Name",
+        "register_last_name" : "Please Enter your Last Name",
         "forgot_ema_required": "This field is required.",
         "forgot_ema_email": "This field is must be an email.",
         "forgot_ema_maxlength": "This field is must be at least 5 characters.",

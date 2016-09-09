@@ -21,7 +21,9 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
       var profile = {
 				id: uid,
         email: user.email,
-				registered_in: Date()
+				registered_in: Date(),
+        first_name: user.fName,
+        last_name: user.lName
       };
 
       // If you want insert more data should modify register.html and modify your object.
