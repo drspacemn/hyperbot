@@ -58,9 +58,6 @@ label.item.valid-lr {
   margin-bottom: 5%;
   margin-top: 2%;
 }
-.chatsButton{
-  width: 50%;
-}
 .profileButton{
   margin-left: 20%;
   margin-right: 5%;
@@ -129,6 +126,18 @@ label.item.valid-lr {
 }
 .logoutButton{
   background-color: #139DEA;
+}
+.filtersSubmit{
+  font-family: 'cliqueFont';
+  background-color: #139DEA;
+  color: white;
+  margin-bottom: 18%;
+}
+.groupIcons{
+  color: white;
+  float: right;
+  font-size: 22px;
+  margin-left: 2%;
 }
 .groupz {
 	float: right;

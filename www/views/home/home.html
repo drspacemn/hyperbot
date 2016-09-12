@@ -8,12 +8,15 @@
             <input type="search" placeholder="Search Chats">
           </label>
           <ul ng-repeat="group in groups">
-            <li class="groupList"><a href="#/chat/{{group.key}}">{{ group.groupData.group_name }}</a></li>
+            <li class="groupList">
+              <a href="#/chat/{{group.key}}">{{ group.groupData.group_name }}</a>
+              <a href="#"><i class="groupIcons iconSize icon ion-navicon-round"></i></a>
+              <a href="#"><i class="groupIcons iconSize icon ion-close-round"></i></a>
+            </li>
           </ul>
           <a href="#/chat"><button class="chatsButton button button-full button-dark">View Chats</button></a>
           <a href="#/chatNode"><button class="chatsButton button button-full button-dark">View Cool Chats</button></a>
         </ion-content>
-
         <div class="bar bar-footer bar-dark">
           <a class="footerProfile" href="#/profile"><button class="footer button button-clear">Profile</button></a>
           <i class="iconSize icon ion-ios-person-outline"></i>
