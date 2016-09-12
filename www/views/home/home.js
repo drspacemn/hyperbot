@@ -16,6 +16,13 @@ angular.module('App').controller('homeController', function ($scope, $state,$cor
 		console.log($scope.groups);
 	})
 
+  groupsRef.on("value", function(snapshot){
+      console.log(snapshot.val());
+  })
+
+  var local = $localStorage.profile;
+
+  console.log(local);
   $scope.logOut = function () {
       Auth.logout();
       $location.path("/login");
