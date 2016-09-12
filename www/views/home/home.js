@@ -13,7 +13,6 @@ angular.module('App').controller('homeController', function($scope, $rootScope, 
       //
       //   },1000)
 		for (var key in data) {
-
       let obj = {};
       obj.delete = function(groupId){
         groupsRef.child(groupId).remove();
