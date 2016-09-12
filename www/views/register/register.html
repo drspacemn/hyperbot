@@ -1,14 +1,14 @@
 <ion-view view-title="">
-  <ion-nav-bar class="bar-positive" align-title="center">
+  <ion-nav-bar class="bar-dark" align-title="center">
     <ion-nav-back-button>
     </ion-nav-back-button>
     <ion-nav-title>
-      {{ 'REGISTER.text_title' | translate }}
-    </ion-nav-title>
+       <span class="navTitle">Clique</span><img class ="logoSmall" src="/img/cliqueLogo.png">
+     </ion-nav-title>
   </ion-nav-bar>
   <ion-content class="padding-top">
     <div class="text-center padding-top">
-      <i class="icon ion-android-person-add larger positive"></i>
+      <i class="register icon ion-android-person-add larger"></i>
     </div>
     <form name="registerForm" novalidate ng-submit="registerForm.$valid && register(user)" ng-class="{ 'has-error' : registerForm.txtemail.$invalid && registerForm.$submitted }">
       <div class="list">
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="padding-top">
-          <input type="submit" value="Register" class="button button-block button-positive" />
+          <input type="submit" value="Register" class="button button-block button-dark" />
         </div>
     </form>
   </ion-content>
