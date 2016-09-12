@@ -15,17 +15,19 @@ angular.module('App').controller('homeController', function($scope, $rootScope, 
 		for (var key in data) {
 
       let obj = {};
-        data[key].members.forEach(function(member) {
-          if(member.id == userId){
-            obj.key = key;
-            obj.groupData = data[key];
-            $scope.groups.push(obj)
-          }
-        })
+      obj.delete = function(groupId){
+        groupsRef.child(groupId).remove();
+      }
+      data[key].members.forEach(function(member) {
+        if(member.id == userId){
+          obj.key = key;
+          obj.groupData = data[key];
+          $scope.groups.push(obj)
+        }
+      })
 		}
     $rootScope.$$phase || $scope.$apply()
 	})
-
 	$scope.logOut = function() {
 		Auth.logout();
 		$location.path("/login");
