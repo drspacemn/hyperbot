@@ -68,15 +68,15 @@ angular.module('App', ['ionic', 'ngStorage', 'ngCordova', 'firebase', 'pascalpre
 		databaseURL: "https://clique-82cee.firebaseio.com",
 		storageBucket: "clique-82cee.appspot.com",
 	})
-	// .run(function($ionicPlatform) {
-	// 	$ionicPlatform.ready(function(FURL) {
-	// 		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-	// 		// for form inputs)
-	// 		if (window.cordova && window.cordova.plugins.Keyboard) {
-	// 			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-	// 		}
-	// 		if (window.StatusBar) {
-	// 			StatusBar.styleDefault();
-	// 		}
-	// 	});
-	// });
+	.run(function($ionicPlatform) {
+		$ionicPlatform.ready(function(FURL) {
+			// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+			// for form inputs)
+			if (window.cordova && window.cordova.plugins.Keyboard) {
+				cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+			}
+			if (window.StatusBar) {
+				StatusBar.styleDefault();
+			}
+		});
+	});
