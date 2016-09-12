@@ -11,7 +11,7 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
 	var Auth = {
 		user: {},
     login: function(user) {
-      
+
 
       // usersRef.child().update({
       //   'last_login': new Date().toString()
@@ -66,6 +66,18 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
     },
 
     logout: function() {
+      // var newLogin = Date().toString();
+      // var usersRef = firebase.database().ref().child('users');
+      // usersRef.on("value", function(snapshot){
+      //   var userTable = snapshot.val();
+      //   for (var key in userTable) {
+      //     if (userTable[key].id == $localStorage.profile) {
+      //         usersRef.child(key).update({'last_login' : newLogin})
+      //
+      //       }
+      //     }
+      // })
+      $localStorage.uid = '';
       auth.$signOut();
 			$log.log("Usuario Sale.");
     },

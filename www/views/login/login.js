@@ -21,14 +21,14 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
       //$localStorage.profile = user.email;
 
       // Setting new Login Time
-      $localStorage.profile = authData.uid;
+      $localStorage.uid = authData.uid;
 
       var newLogin = Date().toString();
       var usersRef = firebase.database().ref().child('users');
       usersRef.on("value", function(snapshot){
         var userTable = snapshot.val();
         for (var key in userTable) {
-          if (userTable[key].id == $localStorage.profile) {
+          if (userTable[key].id == $localStorage.uid) {
               usersRef.child(key).update({'last_login' : newLogin})
 
             }
