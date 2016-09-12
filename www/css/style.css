@@ -133,3 +133,9 @@ label.item.valid-lr {
   color: white;
   margin-bottom: 18%;
 }
+.groupIcons{
+  color: white;
+  float: right;
+  font-size: 22px;
+  margin-left: 2%;
+}
