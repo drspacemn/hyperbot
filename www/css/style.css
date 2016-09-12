@@ -154,6 +154,7 @@ label.item.valid-lr {
 	color: white;
 	border-radius: 10px;
 	margin-top: 10px;
+  font-family: 'cliqueFont';
 }
 .newFriends {
 		font-family: 'Helvetica Neue', sans-serif;
