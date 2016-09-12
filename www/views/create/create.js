@@ -47,7 +47,7 @@ angular.module('App').controller('createController', function ($scope,  $firebas
 		groupsRef.push(group);
 
 		console.log("Group Saved");
-		$location.path('/home');
+		$location.path("/home");
 		$location.replace();
 	}
 
