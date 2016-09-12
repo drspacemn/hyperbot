@@ -411,9 +411,9 @@ a{
   float: right;
   background: rgba(108, 20, 110, 0.6) !important;
   text-align: right !important;
-  padding: 10px !important;
+  padding: 6px !important;
   margin: 1px;
-  border-radius: 10px !important;
+  border-radius: 6px !important;
   max-width: 240px !important;
   font-family: 'Helvetica Neue', 'Roboto';
 }
