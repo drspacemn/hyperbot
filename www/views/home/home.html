@@ -11,11 +11,12 @@
           <ul ng-repeat="group in groups | filter:view.searchChats">
             <li class="groupList">
               <a href="#/chat/{{group.key}}">{{ group.groupData.group_name }}</a>
-              <button ng-click="group.delete(group.key)"><i class="groupIcons iconSize icon ion-navicon-round"></i></button>
-              <button ng-click="group.delete(group.key)"><i class="groupIcons iconSize icon ion-close-round"></i></button>
+              <!-- <button ng-click="group.delete(group.key)"><i class="groupIcons iconSize icon ion-navicon-round"></i></button> -->
+              <i ng-click="group.delete(group.key)" id="foo" class="iconGroupSize icon ion-close-round"></i>
             </li>
           </ul>
           <a href="#/chat"><button class="chatsButton button button-full button-dark">View Chats</button></a>
+
         </ion-content>
         <div class="bar bar-footer bar-dark">
           <a class="footerProfile" href="#/profile"><button class="footer button button-clear">Profile</button></a>
