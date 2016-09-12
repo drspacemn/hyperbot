@@ -33,6 +33,8 @@ angular.module('App').controller('createController', function ($scope,  $firebas
 		//members
 		group.members = [];
 		$scope.view.newGroup.forEach((val)=>{
+			if(group.members == null)
+				group.members.push(usersRef.child(userId))
 			let obj = {};
 			obj[val.key] = val.userData;
 			console.log(val.userData);
