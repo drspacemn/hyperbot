@@ -4,14 +4,15 @@
 		 <a href="#/create"><button class="groupz" class="button button-clear button-positive">+Group</button></a>
 	 </ion-nav-title>
         <ion-content class="padding-top">
+          <label class="chatSearch item item-input">
             <i class="icon ion-search placeholder-icon"></i>
-            <input type="search" placeholder="Search Chats">
+            <input type="search" placeholder="Search Chats" ng-model="view.searchChats">
           </label>
-          <ul ng-repeat="group in groups">
-            <li class="groupList">
+          <ul ng-repeat="group in groups | filter:view.searchChats">
+            <li class="groupList">  
               <a href="#/chat/{{group.key}}">{{ group.groupData.group_name }}</a>
-              <a href="#"><i class="groupIcons iconSize icon ion-navicon-round"></i></a>
-              <a href="#"><i class="groupIcons iconSize icon ion-close-round"></i></a>
+              <button ng-click="group.delete(group.key)"><i class="groupIcons iconSize icon ion-navicon-round"></i></button>
+              <button ng-click="group.delete(group.key)"><i class="groupIcons iconSize icon ion-close-round"></i></button>
             </li>
           </ul>
           <a href="#/chat"><button class="chatsButton button button-full button-dark">View Chats</button></a>

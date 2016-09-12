@@ -23,7 +23,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
 
       // Setting new Login Time
       $localStorage.uid = authData.uid;
-
+      $localStorage.email = authData.email
       var newLogin = Date().toString();
       var usersRef = firebase.database().ref().child('users');
       usersRef.on("value", function(snapshot){

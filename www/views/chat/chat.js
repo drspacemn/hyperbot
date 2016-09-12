@@ -2,9 +2,11 @@
 angular.module('App').controller('chatController', function($scope, $stateParams, $rootScope, $timeout, $firebaseArray, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup, $timeout, $firebaseObject, $ionicScrollDelegate, Auth, FURL, Utils, Messages) {
 	$scope.hideTime = true;
   var userId = $localStorage.uid;
+	var email = $localStorage.email
 	$scope.messages = [];
+
   var chatid = $stateParams.chatId;
-  console.log(chatid);
+
   var ref = firebase.database().ref();
 
 	$timeout(function() {
@@ -13,7 +15,7 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 		}
 	})
 
-	ref.child("messages").on("value", function(snapshot) {
+	ref.child("groups").child(chatid).child('messages').on("value", function(snapshot) {
 		$scope.messages = [];
 		var snap = snapshot.val();
 		for (var key in snap) {
@@ -25,10 +27,6 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 
 	});
 
-    // $scope.$watch('messages', function(a, b){
-    //   $scope.
-    //   $ionicScrollDelegate.scrollBottom(true);
-    // })
 
 	var alternate,
 		isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
@@ -43,7 +41,9 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 			var obj = {}
 			obj.text = $scope.data.message;
 			obj.sent = d;
-			ref.child("groups").push(obj);
+      obj.user_id = userId;
+			obj.email = email
+			ref.child("groups").child(chatid).child('messages').push(obj);
 
 			delete $scope.data.message;
 			$ionicScrollDelegate.scrollBottom(true);
