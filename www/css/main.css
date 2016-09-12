@@ -298,6 +298,18 @@ $stable: #f8f8f8 !default;
   max-width: 240px !important;
   font-family: 'Helvetica Neue', 'Roboto';
 }
+
+.initialSpan {
+  background: #1DAFEC !important;
+  display: inline-block !important;
+  color: white !important;
+  padding: 6px !important;
+  margin: 1px;
+  border-radius: 6px !important;
+  text-align: left !important;
+  font-family: 'Helvetica Neue', 'Roboto';
+}
+
 .profilePic{
   width: 80%;
 }
