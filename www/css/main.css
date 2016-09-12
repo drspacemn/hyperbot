@@ -311,3 +311,11 @@ a{
   background-color: #1DAFEC;
   color: white;
 }
+.row {
+	padding: 0;
+	margin: 0;
+}
+
+.col {
+	border: 1px solid pink;
+}
