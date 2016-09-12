@@ -78,12 +78,17 @@ label.item.valid-lr {
   padding: 1px;
 }
 .iconSize{
+  font-size: 30px;
+  padding-right: 1px;
+  color: white;
+  float: right;
+}
+.iconGroupSize{
   font-size: 21px;
   margin-right: 2px;
   color: white;
   float: right;
 }
-
 .footerProfile{
   margin-left: 11%;
   font-size: 10px;
