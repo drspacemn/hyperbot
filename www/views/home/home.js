@@ -9,6 +9,9 @@ angular.module('App').controller('homeController', function($scope, $rootScope, 
 		let data = snapshot.val();
 		for (var key in data) {
       let obj = {};
+      obj.delete = function(groupId){
+        groupsRef.child(groupId).remove();
+      }
       data[key].members.forEach(function(member) {
         console.log('####################################################');
         console.log(member);
@@ -21,7 +24,6 @@ angular.module('App').controller('homeController', function($scope, $rootScope, 
 		}
     $rootScope.$$phase || $scope.$apply()
 	})
-
 	$scope.logOut = function() {
 		Auth.logout();
 		$location.path("/login");
