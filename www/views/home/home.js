@@ -1,20 +1,24 @@
 'Use Strict';
 angular.module('App').controller('homeController', function($scope, $rootScope, $state, $cordovaOauth, $localStorage, $log, $location, $http, $ionicPopup, $firebaseObject, Auth, FURL, Utils) {
 	var ref = firebase.database().ref();
+
 	var groupsRef = ref.child('groups');
 	var userId = $localStorage.uid;
 
 	groupsRef.on("value", function(snapshot) {
     $scope.groups = [];
 		let data = snapshot.val();
+      // if(data === undefined)
+      //   $timeout(function() {
+      //
+      //   },1000)
 		for (var key in data) {
+
       let obj = {};
       obj.delete = function(groupId){
         groupsRef.child(groupId).remove();
       }
       data[key].members.forEach(function(member) {
-        console.log('####################################################');
-        console.log(member);
         if(member.id == userId){
           obj.key = key;
           obj.groupData = data[key];
