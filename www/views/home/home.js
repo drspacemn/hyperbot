@@ -23,6 +23,8 @@ angular.module('App').controller('homeController', function($scope, $rootScope, 
 		}
     $rootScope.$$phase || $scope.$apply()
 	})
+
+  
 	$scope.logOut = function() {
 		Auth.logout();
 		$location.path("/login");
