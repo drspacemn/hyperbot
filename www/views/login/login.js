@@ -1,4 +1,5 @@
 'Use Strict';
+
 angular.module('App').controller('loginController', function ($scope, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup,$firebaseAuth, $firebaseObject,$log, Auth, FURL, Utils) {
   //var ref = new Firebase(FURL);
   var auth = $firebaseAuth();
@@ -10,10 +11,33 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
     if(angular.isDefined(user)){
     Utils.show();
     Auth.login(user).then(function(authData) {
+
       $log.log(user)
       $log.log("Auth Data");
       $log.log(authData);
+      // var last_login = authData.oa.Ha.toString()
+      // var testEmail = authData.email
+      // var usersRef = firebase.database().ref().child('users');
+      // usersRef.child('-KRFzML79Kex1PRV1azX').update({'first_name': 'Tim'})
       //$localStorage.profile = user.email;
+
+      // Setting new Login Time
+      $localStorage.uid = authData.uid;
+
+      var newLogin = Date().toString();
+      var usersRef = firebase.database().ref().child('users');
+      usersRef.on("value", function(snapshot){
+        var userTable = snapshot.val();
+        for (var key in userTable) {
+          if (userTable[key].id == $localStorage.uid) {
+              usersRef.child(key).update({'last_login' : newLogin})
+
+            }
+          }
+      })
+
+
+
        Utils.hide();
       $state.go('home');
       }, function(err) {
