@@ -67,7 +67,7 @@ label.item.valid-lr {
 }
 .logoSmall{
   margin-top: 5px;
-  margin-left: 3%;
+  margin-left: 12%;
   position: absolute;
   width: 42px;
   height: 35px;
@@ -76,7 +76,7 @@ label.item.valid-lr {
 .navTitle{
   font-size: 26px;
   margin-bottom: -5px;
-  margin-left: -13%;
+	margin-right: -10%;
   font-family: 'cliqueFont';
   padding: 1px;
 }
@@ -129,4 +129,41 @@ label.item.valid-lr {
 }
 .logoutButton{
   background-color: #139DEA;
+}
+.groupz {
+	float: right;
+	border: 0;
+	background: #139DEA;
+	color: white;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+.newFriends {
+		font-family: 'Helvetica Neue', sans-serif;
+}
+.removeF {
+	display: inline-block;
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	border: 1px solid black;
+	height: 30px;
+	max-width: 200px;
+	border-radius: 10px;
+	border: darkgrey;
+	background: lightgrey;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.friendList .friendItem {
+	margin-bottom: -22px;
+	border-bottom: 0;
+}
+.friendList img {
+	max-width: 30px;
+}
+
+.addPage {
+	font-family: 'Helvetica Neue', sans-serif;
 }
