@@ -8,12 +8,7 @@ angular.module('App').controller('homeController', function($scope, $rootScope, 
 	groupsRef.on("value", function(snapshot) {
     $scope.groups = [];
 		let data = snapshot.val();
-      // if(data === undefined)
-      //   $timeout(function() {
-      //
-      //   },1000)
 		for (var key in data) {
-
       let obj = {};
         data[key].members.forEach(function(member) {
           if(member.id == userId){
