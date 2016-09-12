@@ -10,6 +10,10 @@
           <a href="#/chat"><button class="chatsButton button button-full button-dark">View Chats</button></a>
           <a href="#/chatNode"><button class="chatsButton button button-full button-dark">View Cool Chats</button></a>
         </ion-content>
+				<div ng-repeat="group in groups">
+					<h4>{{group.groupData.group_name}}</h4>
+				</div>
+
         <div class="bar bar-footer bar-dark">
           <a class="footer" href="#/profile"><button class="footer button button-clear">Profile</button></a>
           <i class="iconSize icon ion-ios-person-outline"></i>
