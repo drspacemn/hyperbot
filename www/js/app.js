@@ -34,11 +34,21 @@ angular.module('App', ['ionic', 'ngStorage', 'ngCordova', 'firebase', 'pascalpre
 				templateUrl: 'views/profile/profile.html',
 				controller: 'profileController'
 			})
+			.state('chatNode', {
+				url: '/chatNode',
+				templateUrl: 'views/chatNode/chatNode.html',
+				controller: 'chatNodeController'
+			})
       .state('chat',{
         url:'/chat',
         templateUrl: 'views/chat/chat.html',
         controller: 'chatController'
-      });
+      })
+      .state('settings',{
+        url:'/settings',
+        templateUrl: 'views/settings/settings.html',
+        controller: 'settingsController'
+      })
 		$urlRouterProvider.otherwise("/login");
 	})
 
