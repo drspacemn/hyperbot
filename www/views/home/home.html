@@ -11,8 +11,8 @@
           <ul ng-repeat="group in groups | filter:view.searchChats">
             <li class="groupList">
               <a href="#/chat/{{group.key}}">{{ group.groupData.group_name }}</a>
-              <a href="#"><i class="groupIcons iconSize icon ion-navicon-round"></i></a>
-              <a href="#"><i class="groupIcons iconSize icon ion-close-round"></i></a>
+              <button ng-click="group.delete(group.key)"><i class="groupIcons iconSize icon ion-navicon-round"></i></button>
+              <button ng-click="group.delete(group.key)"><i class="groupIcons iconSize icon ion-close-round"></i></button>
             </li>
           </ul>
           <a href="#/chat"><button class="chatsButton button button-full button-dark">View Chats</button></a>
