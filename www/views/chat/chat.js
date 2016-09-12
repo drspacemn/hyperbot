@@ -5,6 +5,7 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 	var email = $localStorage.email
 	$scope.messages = [];
 
+	console.log();
   var chatid = $stateParams.chatId;
 
   var ref = firebase.database().ref();

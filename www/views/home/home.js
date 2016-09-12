@@ -6,7 +6,8 @@ angular.module('App').controller('homeController', function($scope, $rootScope, 
 	var userId = $localStorage.uid;
 
 	groupsRef.on("value", function(snapshot) {
-    $scope.groups = [];
+		$scope.groups = [];
+
 		let data = snapshot.val();
 		for (var key in data) {
       let obj = {};
