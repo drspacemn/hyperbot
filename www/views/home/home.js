@@ -13,7 +13,6 @@ angular.module('App').controller('homeController', function ($scope, $state,$cor
 			obj.groupData = data[key];
 			$scope.groups.push(obj)
 		}
-		console.log($scope.groups);
 	})
 
   $scope.logOut = function () {
