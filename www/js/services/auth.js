@@ -1,4 +1,4 @@
-angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $firebaseArray, $firebaseObject, $translate, Utils) {
+angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $firebaseArray, $firebaseObject, $translate, Utils, $localStorage) {
 
 	//var ref = new Firebase(FURL);
 
@@ -10,8 +10,12 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
 
 	var Auth = {
 		user: {},
-
     login: function(user) {
+
+
+      // usersRef.child().update({
+      //   'last_login': new Date().toString()
+      // });
       return auth.$signInWithEmailAndPassword(
         user.email, user.password
       );
@@ -24,6 +28,7 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
 				registered_in: Date(),
         first_name: user.fName,
         last_name: user.lName,
+        last_login: Date()
       };
 
       // If you want insert more data should modify register.html and modify your object.
@@ -46,7 +51,7 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
 
     getUID: function() {
       console.log(auth);
-      
+
     },
 
     register: function(user) {
@@ -61,6 +66,18 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
     },
 
     logout: function() {
+      // var newLogin = Date().toString();
+      // var usersRef = firebase.database().ref().child('users');
+      // usersRef.on("value", function(snapshot){
+      //   var userTable = snapshot.val();
+      //   for (var key in userTable) {
+      //     if (userTable[key].id == $localStorage.profile) {
+      //         usersRef.child(key).update({'last_login' : newLogin})
+      //
+      //       }
+      //     }
+      // })
+      $localStorage.uid = '';
       auth.$signOut();
 			$log.log("Usuario Sale.");
     },

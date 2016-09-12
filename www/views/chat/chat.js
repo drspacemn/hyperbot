@@ -23,7 +23,10 @@ angular.module('App').controller('chatController', function ($scope, $rootScope,
 
 	    });
 
-	// });
+    // $scope.$watch('messages', function(a, b){
+    //   $scope.
+    //   $ionicScrollDelegate.scrollBottom(true);
+    // })
 
   var alternate,
     isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
