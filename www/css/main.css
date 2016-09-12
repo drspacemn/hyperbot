@@ -311,11 +311,59 @@ a{
   background-color: #1DAFEC;
   color: white;
 }
+.chatNode {
+	padding: 5px;
+}
+.messageNode {
+	margin: 15px;
+	-webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+}
+
 .row {
 	padding: 0;
 	margin: 0;
+	height: 43vh;
+}
+.right{
+	text-align: right;
+}
+.left {
+	text-align: left;
+}
+.relative {
+	position: relative;
+	}
+.tLefty{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.tRighty{
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
-.col {
-	border: 1px solid pink;
+.bLefty {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.bRighty {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+.nodes {
+	background: #149CEB;
+	border-radius: 100%;
+	width: 25px;
+	height: 25px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
