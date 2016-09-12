@@ -1,12 +1,11 @@
 'Use Strict';
-angular.module('App').controller('homeController', function($scope, $state, $cordovaOauth, $localStorage, $log, $location, $http, $ionicPopup, $firebaseObject, Auth, FURL, Utils) {
+angular.module('App').controller('homeController', function($scope, $rootScope, $state, $cordovaOauth, $localStorage, $log, $location, $http, $ionicPopup, $firebaseObject, Auth, FURL, Utils) {
 	var ref = firebase.database().ref();
 	var groupsRef = ref.child('groups');
 	var userId = $localStorage.uid;
 
-  $scope.groups = [];
-
 	groupsRef.on("value", function(snapshot) {
+    $scope.groups = [];
 		let data = snapshot.val();
 		for (var key in data) {
       let obj = {};
@@ -20,6 +19,7 @@ angular.module('App').controller('homeController', function($scope, $state, $cor
         }
       })
 		}
+    $rootScope.$$phase || $scope.$apply()
 	})
 
 	$scope.logOut = function() {
