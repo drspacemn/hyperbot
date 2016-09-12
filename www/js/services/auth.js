@@ -1,4 +1,4 @@
-angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $firebaseArray, $firebaseObject, $translate, Utils) {
+angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $firebaseArray, $firebaseObject, $translate, Utils, $localStorage) {
 
 	//var ref = new Firebase(FURL);
 
@@ -11,19 +11,7 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
 	var Auth = {
 		user: {},
     login: function(user) {
-      var newLogin = Date().toString();
-      var usersRef = firebase.database().ref().child('users');
-      console.log(usersRef.chils(localStorage.getItem('profile')));
-      // usersRef.on("value", function(snapshot){
-      //   var userTable = snapshot.val();
-      //   for (var key in userTable) {
-      //     if (userTable[key].email == user.email ) {
-      //         usersRef.child(key).update({'last_login' : newLogin})
-      //       }
-      //     }
-      // })
-      // TODO: UPDATE the DB ref with LocalStorage / cookies.  Or use Invisible ngModel on $rootscope to set the current ID
-
+      
 
       // usersRef.child().update({
       //   'last_login': new Date().toString()

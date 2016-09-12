@@ -19,7 +19,24 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
       // var usersRef = firebase.database().ref().child('users');
       // usersRef.child('-KRFzML79Kex1PRV1azX').update({'first_name': 'Tim'})
       //$localStorage.profile = user.email;
+
+      // Setting new Login Time
       $localStorage.profile = authData.uid;
+
+      var newLogin = Date().toString();
+      var usersRef = firebase.database().ref().child('users');
+      usersRef.on("value", function(snapshot){
+        var userTable = snapshot.val();
+        for (var key in userTable) {
+          if (userTable[key].id == $localStorage.profile) {
+              usersRef.child(key).update({'last_login' : newLogin})
+
+            }
+          }
+      })
+
+
+
        Utils.hide();
       $state.go('home');
       }, function(err) {
