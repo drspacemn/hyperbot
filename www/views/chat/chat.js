@@ -1,9 +1,10 @@
 'Use Strict';
-angular.module('App').controller('chatController', function($scope, $rootScope, $timeout, $firebaseArray, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup, $timeout, $firebaseObject, $ionicScrollDelegate, Auth, FURL, Utils, Messages) {
+angular.module('App').controller('chatController', function($scope, $stateParams, $rootScope, $timeout, $firebaseArray, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup, $timeout, $firebaseObject, $ionicScrollDelegate, Auth, FURL, Utils, Messages) {
 	$scope.hideTime = true;
   var userId = $localStorage.uid;
 	$scope.messages = [];
-
+  var chatid = $stateParams.chatId;
+  console.log(chatid);
   var ref = firebase.database().ref();
 
 	$timeout(function() {
