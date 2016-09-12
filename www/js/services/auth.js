@@ -10,8 +10,23 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
 
 	var Auth = {
 		user: {},
-
     login: function(user) {
+      var newLogin = Date().toString();
+      var usersRef = firebase.database().ref().child('users');
+      usersRef.on("value", function(snapshot){
+        var userTable = snapshot.val();
+        for (var key in userTable) {
+          if (userTable[key].email == user.email ) {
+              usersRef.child(key).update({'last_login' : newLogin})
+            }
+          }
+      })
+      // TODO: UPDATE the DB ref with LocalStorage / cookies.  Or use Invisible ngModel on $rootscope to set the current ID
+
+
+      // usersRef.child().update({
+      //   'last_login': new Date().toString()
+      // });
       return auth.$signInWithEmailAndPassword(
         user.email, user.password
       );
@@ -23,7 +38,8 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
         email: user.email,
 				registered_in: Date(),
         first_name: user.fName,
-        last_name: user.lName
+        last_name: user.lName,
+        last_login: Date()
       };
 
       // If you want insert more data should modify register.html and modify your object.
@@ -43,6 +59,15 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
       messagesRef.$add(profile);
       $log.log("User Saved");
     },
+
+    //var groupsRef = firebase.database().ref().child('groups');
+    // groupsRef.on("value", function(snapshot){
+    //     console.log(snapshot.val());
+    // })
+    // var usersRef = firebase.database().ref().child('users');
+    // usersRef.on("value", function(snapshot){
+    //     console.log(snapshot.val());
+    // })
 
     register: function(user) {
       return auth.$createUserWithEmailAndPassword(user.email, user.password)
