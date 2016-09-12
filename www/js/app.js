@@ -39,11 +39,11 @@ angular.module('App', ['ionic', 'ngStorage', 'ngCordova', 'firebase', 'pascalpre
 				templateUrl: 'views/chatNode/chatNode.html',
 				controller: 'chatNodeController'
 			})
-      .state('chat',{
-        url:'/chat',
-        templateUrl: 'views/chat/chat.html',
-        controller: 'chatController'
-      })
+      // .state('chat',{
+      //   url:'/chat',
+      //   templateUrl: 'views/chat/chat.html',
+      //   controller: 'chatController'
+      // })
       .state('create',{
         url:'/create',
         templateUrl: 'views/create/create.html',
@@ -54,6 +54,11 @@ angular.module('App', ['ionic', 'ngStorage', 'ngCordova', 'firebase', 'pascalpre
         templateUrl: 'views/settings/settings.html',
         controller: 'settingsController'
       })
+			.state('/chat/:chatId',{
+				url:'/chat/:chatId',
+        templateUrl: 'views/chat/chat.html',
+        controller: 'chatController'
+			})
 		$urlRouterProvider.otherwise("/login");
 	})
 
