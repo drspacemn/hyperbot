@@ -34,9 +34,10 @@ angular.module('App').controller('chatController', function ($scope, $rootScope,
     alternate = !alternate;
 
     var d = new Date();
-    d = d.toLocaleTimeString().replace(/:\d+ /, ' ');
+    d = d.toUTCString();
 		var obj = {}
 		obj.text = $scope.data.message;
+    obj.sent = d;
 		ref.child("messages").push(obj);
 
     delete $scope.data.message;

@@ -10,10 +10,11 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
     if(angular.isDefined(user)){
     Utils.show();
     Auth.login(user).then(function(authData) {
+
       $log.log(user)
       $log.log("Auth Data");
       $log.log(authData);
-      //$localStorage.profile = user.email;
+      $localStorage.profile = authData.uid;
        Utils.hide();
       $state.go('home');
       }, function(err) {
