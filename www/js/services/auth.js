@@ -1,4 +1,4 @@
-angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $firebaseArray, $firebaseObject, $translate, Utils) {
+angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $firebaseArray, $firebaseObject, $translate, Utils, $localStorage) {
 
 	//var ref = new Firebase(FURL);
 
@@ -11,11 +11,15 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
 	var Auth = {
 		user: {},
 
-		login: function(user) {
-			return auth.$signInWithEmailAndPassword(
-				user.email, user.password
-			);
-		},
+    login: function(user) {
+
+      // usersRef.child().update({
+      //   'last_login': new Date().toString()
+      // });
+      return auth.$signInWithEmailAndPassword(
+        user.email, user.password
+      );
+    },
 
 		createProfile: function(uid, user) {
 			var profile = {
@@ -24,12 +28,14 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
 				registered_in: Date(),
 				first_name: user.fName,
 				last_name: user.lName,
+        last_login: Date()
 			};
 
 			var messagesRef = $firebaseArray(firebase.database().ref().child("users"));
 			messagesRef.$add(profile);
 			$log.log("User Saved");
 		},
+
 
 		register: function(user) {
 			return auth.$createUserWithEmailAndPassword(user.email, user.password)
@@ -42,8 +48,20 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
 				});
 		},
 
-		logout: function() {
-			auth.$signOut();
+    logout: function() {
+      // var newLogin = Date().toString();
+      // var usersRef = firebase.database().ref().child('users');
+      // usersRef.on("value", function(snapshot){
+      //   var userTable = snapshot.val();
+      //   for (var key in userTable) {
+      //     if (userTable[key].id == $localStorage.profile) {
+      //         usersRef.child(key).update({'last_login' : newLogin})
+      //
+      //       }
+      //     }
+      // })
+      $localStorage.uid = '';
+      auth.$signOut();
 			$log.log("Usuario Sale.");
 		},
 
