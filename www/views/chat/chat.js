@@ -21,6 +21,7 @@ angular.module('App').controller('chatController', function ($scope,  $firebaseA
 
     $scope.bodyFocus = function(){
       $state.reload();
+      "AIzaSyDpcHjxA_n9ZS1PPSTbSUnSI2PdwkbVu64"
     }
 
 
