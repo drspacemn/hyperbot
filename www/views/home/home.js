@@ -1,17 +1,27 @@
 'Use Strict';
 angular.module('App').controller('homeController', function ($scope, $state,$cordovaOauth, $localStorage, $log, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
-  var userRef = firebase.database().ref().child('users');
-  var groupsRef = firebase.database().ref().child('groups');
-  var Auth = Auth;
+  var ref = firebase.database().ref();
+	var groupsRef = ref.child('groups');
+
+	$scope.groups = [];
+	groupsRef.on("value", function(snapshot){
+		$scope.groups = [];
+		let data = snapshot.val();
+		for(var key in data){
+			let obj = {};
+			obj.key = key;
+			obj.groupData = data[key];
+			$scope.groups.push(obj)
+		}
+		console.log($scope.groups);
+	})
 
   groupsRef.on("value", function(snapshot){
       console.log(snapshot.val());
   })
-  userRef.on("value", function(snapshot){
-      console.log(snapshot.val());
-  })
 
-  var local = $localStorage.get();
+  var local = $localStorage.profile;
+
   console.log(local);
   $scope.logOut = function () {
       Auth.logout();
