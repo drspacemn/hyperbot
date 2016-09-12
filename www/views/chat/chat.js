@@ -4,12 +4,13 @@ angular.module('App').controller('chatController', function($scope, $rootScope, 
   var userId = $localStorage.uid;
 	$scope.messages = [];
 
+  var ref = firebase.database().ref();
+
 	$timeout(function() {
 		if ($location.url() === '/chat') {
 			$ionicScrollDelegate.scrollBottom(true);
 		}
 	})
-	var ref = firebase.database().ref();
 
 	ref.child("messages").on("value", function(snapshot) {
 		$scope.messages = [];
