@@ -4,9 +4,9 @@ angular.module('App').controller('homeController', function($scope, $state, $cor
 	var groupsRef = ref.child('groups');
 	var userId = $localStorage.uid;
 
-  $scope.groups = [];
 
 	groupsRef.on("value", function(snapshot) {
+		$scope.groups = [];
 		let data = snapshot.val();
 		for (var key in data) {
       let obj = {};
