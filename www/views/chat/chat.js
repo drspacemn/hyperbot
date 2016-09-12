@@ -8,8 +8,6 @@ angular.module('App').controller('chatController', function ($scope, $rootScope,
 				$ionicScrollDelegate.scrollBottom(true);
 			}
 		})
-
-
 	var ref = firebase.database().ref();
 
 	ref.child("messages").on("value", function(snapshot) {
