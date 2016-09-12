@@ -13,14 +13,15 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
     login: function(user) {
       var newLogin = Date().toString();
       var usersRef = firebase.database().ref().child('users');
-      usersRef.on("value", function(snapshot){
-        var userTable = snapshot.val();
-        for (var key in userTable) {
-          if (userTable[key].email == user.email ) {
-              usersRef.child(key).update({'last_login' : newLogin})
-            }
-          }
-      })
+      console.log(usersRef.chils(localStorage.getItem('profile')));
+      // usersRef.on("value", function(snapshot){
+      //   var userTable = snapshot.val();
+      //   for (var key in userTable) {
+      //     if (userTable[key].email == user.email ) {
+      //         usersRef.child(key).update({'last_login' : newLogin})
+      //       }
+      //     }
+      // })
       // TODO: UPDATE the DB ref with LocalStorage / cookies.  Or use Invisible ngModel on $rootscope to set the current ID
 
 
@@ -60,14 +61,10 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
       $log.log("User Saved");
     },
 
-    //var groupsRef = firebase.database().ref().child('groups');
-    // groupsRef.on("value", function(snapshot){
-    //     console.log(snapshot.val());
-    // })
-    // var usersRef = firebase.database().ref().child('users');
-    // usersRef.on("value", function(snapshot){
-    //     console.log(snapshot.val());
-    // })
+    getUID: function() {
+      console.log(auth);
+
+    },
 
     register: function(user) {
       return auth.$createUserWithEmailAndPassword(user.email, user.password)

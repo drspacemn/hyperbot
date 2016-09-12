@@ -306,6 +306,7 @@ $stable: #f8f8f8 !default;
 }
 a{
   text-decoration: none;
+  color: white;
 }
 .chatsButton{
   background-color: #1DAFEC;

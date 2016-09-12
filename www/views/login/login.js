@@ -10,6 +10,7 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
     if(angular.isDefined(user)){
     Utils.show();
     Auth.login(user).then(function(authData) {
+
       $log.log(user)
       $log.log("Auth Data");
       $log.log(authData);
@@ -17,8 +18,8 @@ angular.module('App').controller('loginController', function ($scope, $state,$co
       // var testEmail = authData.email
       // var usersRef = firebase.database().ref().child('users');
       // usersRef.child('-KRFzML79Kex1PRV1azX').update({'first_name': 'Tim'})
-
       //$localStorage.profile = user.email;
+      $localStorage.profile = authData.uid;
        Utils.hide();
       $state.go('home');
       }, function(err) {
