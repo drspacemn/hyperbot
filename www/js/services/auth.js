@@ -23,7 +23,7 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
         email: user.email,
 				registered_in: Date(),
         first_name: user.fName,
-        last_name: user.lName
+        last_name: user.lName,
       };
 
       // If you want insert more data should modify register.html and modify your object.
@@ -42,6 +42,11 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
       var messagesRef = $firebaseArray(firebase.database().ref().child("users"));
       messagesRef.$add(profile);
       $log.log("User Saved");
+    },
+
+    getUID: function() {
+      console.log(auth);
+      
     },
 
     register: function(user) {
