@@ -19,7 +19,7 @@ angular.module('App').controller('chatNodeController', function ($scope,  $fireb
 				var obj = {};
 				obj.userData = snap[i];
 				obj.userMessages = [];
-				
+
 			}else {
 				console.log("user", snap[i]);
 			}
