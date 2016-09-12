@@ -20,7 +20,6 @@ angular.module('App').controller('createController', function ($scope,  $firebas
 	$scope.view.addFriend = function(user){
 		$scope.view.searchInput = '';
 		$scope.view.newGroup.push(user)
-		console.log($scope.view.newGroup);
 	}
 	$scope.view.remove = function(friend){
 		// $scope.view.newGroup.splice(index, 1);
@@ -36,7 +35,8 @@ angular.module('App').controller('createController', function ($scope,  $firebas
 		$scope.view.newGroup.forEach((val)=>{
 			let obj = {};
 			obj[val.key] = val.userData;
-			group.members.push(obj);
+			console.log(val.userData);
+			group.members.push(val.userData);
 		})
 
 		group.group_name = $scope.view.groupName;
