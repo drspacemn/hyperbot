@@ -51,7 +51,6 @@ label.item.valid-lr {
       }
 .profileText {
   padding: 8%;
-  margin-bottom: 23%;
 }
 .chatSearch{
   width: 90%;
@@ -93,4 +92,12 @@ label.item.valid-lr {
 }
 .register{
   color: #139DEA;
+}
+.filters{
+  font-family: 'cliqueFont';
+  margin-left: 8%;
+}
+.settings{
+  font-family: 'cliqueFont';
+  margin-left: 8%;
 }
