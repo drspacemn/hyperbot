@@ -217,6 +217,7 @@ $stable: #f8f8f8 !default;
   padding: 10px 0 50px !important;
 }
 .messages {
+  clear: both;
   display: -webkit-box !important;
   display: -moz-box !important;
   display: -ms-flexbox !important;
@@ -246,6 +247,7 @@ $stable: #f8f8f8 !default;
     -moz-transform: translate3d(0, 0, 0) !important;
     transform: translate3d(0, 0, 0) !important;
   }
+
 }
 .time {
   -webkit-box-flex: 0 !important;
@@ -293,6 +295,7 @@ $stable: #f8f8f8 !default;
   display: inline-block !important;
   color: white !important;
   padding: 10px !important;
+  margin: 1px;
   border-radius: 10px !important;
   text-align: left !important;
   max-width: 240px !important;
@@ -309,6 +312,9 @@ $stable: #f8f8f8 !default;
   text-align: left !important;
   font-family: 'Helvetica Neue', 'Roboto';
 }
+
+
+
 
 .profilePic{
   width: 80%;
@@ -386,4 +392,36 @@ a{
 
 .groupSearch {
 	margin: 0;
+}
+
+.selfieMsg {
+  display: inline-block !important;
+  float: right;
+  background: purple !important;
+  text-align: right !important;
+  padding: 10px !important;
+  margin: 1px;
+  border-radius: 10px !important;
+  max-width: 240px !important;
+  font-family: 'Helvetica Neue', 'Roboto';
+}
+
+.selfieMsgInitial {
+  display: inline-block !important;
+  float: right;
+  background: rgba(108, 20, 110, 0.6) !important;
+  text-align: right !important;
+  padding: 10px !important;
+  margin: 1px;
+  border-radius: 10px !important;
+  max-width: 240px !important;
+  font-family: 'Helvetica Neue', 'Roboto';
+}
+
+.selfieMsgContainer {
+  clear: both;
+  display: block !important;
+  float: right;
+  right: 0;
+  text-align: right !important;
 }
