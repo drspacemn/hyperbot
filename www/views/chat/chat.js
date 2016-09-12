@@ -14,6 +14,12 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 			$ionicScrollDelegate.scrollBottom(true);
 		}
 	})
+	ref.child("groups").child(chatid).on("value", function(snapshot){
+		var snap = snapshot.val();
+		console.log(snap);
+		console.log(snap.group_name);
+		$scope.groupNameOnChat = snap.group_name;
+	})
 
 	ref.child("groups").child(chatid).child('messages').on("value", function(snapshot) {
 		$scope.messages = [];

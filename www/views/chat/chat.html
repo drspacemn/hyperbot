@@ -1,5 +1,10 @@
 <!-- TODO Change specific group chat to Specific groups title -->
-<ion-view view-title="Specific Group Chat" hide-back-button="false">
+<ion-view hide-back-button="false">
+  <ion-nav-title>
+    <p>
+      {{groupNameOnChat}}
+    </p>
+	</ion-nav-title>
   <ion-nav-bar class="bar-dark">
     <ion-nav-back-button class="button-icon ion-arrow-left-c">
     </ion-nav-back-button>
@@ -12,7 +17,7 @@
       <div ng-repeat="message in messages" ng-class="{other: message.userId != myId}" class="messages">
         <div class="message" ng-class="{'slide-right': hideTime, '': !hideTime}">
           <span class='initialSpan'>{{message.email[0].toUpperCase()}}</span>
-          <span class="messageSpan">{{ message.text }}</span>
+          <span class="messageSpan">{{message.text}}</span>
         </div>
         <div class="time" ng-class="{'slide-right': hideTime, '': !hideTime}">{{message.time}}</div>
       </div>
