@@ -9,13 +9,12 @@
             <input type="search" placeholder="Search Chats" ng-model="view.searchChats">
           </label>
           <ul ng-repeat="group in groups | filter:view.searchChats">
-            <li class="groupList">  
+            <li class="groupList">
               <a href="#/chat/{{group.key}}">{{ group.groupData.group_name }}</a>
               <button ng-click="group.delete(group.key)"><i class="groupIcons iconSize icon ion-navicon-round"></i></button>
               <button ng-click="group.delete(group.key)"><i class="groupIcons iconSize icon ion-close-round"></i></button>
             </li>
           </ul>
-          <a href="#/chat"><button class="chatsButton button button-full button-dark">View Chats</button></a>
           <a href="#/chatNode"><button class="chatsButton button button-full button-dark">View Cool Chats</button></a>
         </ion-content>
         <div class="bar bar-footer bar-dark">
