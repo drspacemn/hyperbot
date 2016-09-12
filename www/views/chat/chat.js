@@ -2,6 +2,8 @@
 angular.module('App').controller('chatController', function($scope, $stateParams, $rootScope, $timeout, $firebaseArray, $state, $cordovaOauth, $localStorage, $location, $http, $ionicPopup, $timeout, $firebaseObject, $ionicScrollDelegate, Auth, FURL, Utils, Messages) {
 	$scope.hideTime = true;
   var userId = $localStorage.uid;
+	$scope.user_id = userId;
+	
 	var email = $localStorage.email
 	$scope.messages = [];
 
@@ -19,6 +21,7 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 		$scope.messages = [];
 		var snap = snapshot.val();
 		for (var key in snap) {
+			console.log(snap[key].user_id);
 			$scope.messages.push(snap[key])
 		}
 
@@ -31,6 +34,7 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 	var alternate,
 		isIOS = ionic.Platform.isWebView() && ionic.Platform.isIOS();
 
+
 	$scope.sendMessage = function() {
 		if ($scope.data.message) {
 
@@ -42,7 +46,7 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 			obj.text = $scope.data.message;
 			obj.sent = d;
       obj.user_id = userId;
-			obj.email = email
+			obj.email = email;
 			ref.child("groups").child(chatid).child('messages').push(obj);
 
 			delete $scope.data.message;
