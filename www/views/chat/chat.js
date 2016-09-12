@@ -3,10 +3,11 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 	$scope.hideTime = true;
   var userId = $localStorage.uid;
 	$scope.user_id = userId;
-	
+
 	var email = $localStorage.email
 	$scope.messages = [];
 
+	console.log();
   var chatid = $stateParams.chatId;
 
   var ref = firebase.database().ref();
@@ -15,6 +16,12 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 		if ($location.url() === '/chat') {
 			$ionicScrollDelegate.scrollBottom(true);
 		}
+	})
+	ref.child("groups").child(chatid).on("value", function(snapshot){
+		var snap = snapshot.val();
+		console.log(snap);
+		console.log(snap.group_name);
+		$scope.groupNameOnChat = snap.group_name;
 	})
 
 	ref.child("groups").child(chatid).child('messages').on("value", function(snapshot) {
@@ -54,11 +61,6 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 
 		}
 	};
-	// 	firebase.child("location/city").on("value", function(snapshot) {
-	//   alert(snapshot.val());  // Alerts "San Francisco"
-	// });
-
-
 
 	$scope.inputUp = function() {
 		if (isIOS) $scope.data.keyboardHeight = 216;

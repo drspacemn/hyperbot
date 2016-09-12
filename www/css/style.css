@@ -80,6 +80,14 @@ label.item.valid-lr {
 .iconSize{
   font-size: 30px;
   padding-right: 1px;
+  color: white;
+  float: right;
+}
+.iconGroupSize{
+  font-size: 21px;
+  margin-right: 2px;
+  color: white;
+  float: right;
 }
 .footerProfile{
   margin-left: 11%;
@@ -133,11 +141,11 @@ label.item.valid-lr {
   color: white;
   margin-bottom: 18%;
 }
-.groupIcons{
-  color: white;
+.groupButton{
   float: right;
-  font-size: 22px;
-  margin-left: 2%;
+  height: 20px;
+  width: 20px;
+  background-color:#139DEA;
 }
 .groupz {
 	float: right;
@@ -146,6 +154,7 @@ label.item.valid-lr {
 	color: white;
 	border-radius: 10px;
 	margin-top: 10px;
+  font-family: 'cliqueFont';
 }
 .newFriends {
 		font-family: 'Helvetica Neue', sans-serif;

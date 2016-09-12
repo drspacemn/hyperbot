@@ -28,7 +28,7 @@ angular.module('App').factory('Utils', function($ionicLoading, $ionicPopup, $tra
 
 		errMessage: function(err) {
 
-	    var msg = "Unknown Error...";
+	    var msg = "Incorrect Email and/or Password";
 
 	    if(err && err.code) {
 	      switch (err.code) {
