@@ -55,7 +55,7 @@ label.item.valid-lr {
 .chatSearch{
   width: 90%;
   margin-left: 5%;
-  margin-bottom: 27%;
+  margin-bottom: 5%;
   margin-top: 2%;
 }
 .chatsButton{
@@ -76,6 +76,7 @@ label.item.valid-lr {
 .navTitle{
   font-size: 26px;
   margin-bottom: -5px;
+  margin-left: -13%;
   font-family: 'cliqueFont';
   padding: 1px;
 }
@@ -113,4 +114,19 @@ label.item.valid-lr {
   margin-left: 5%;
   font-size: 10px;
   font-family: 'cliqueFont';
+}
+.groupList{
+  text-align: center;
+  border: 1px solid black;
+  padding: 2px;
+  margin-left: 10%;
+  margin-bottom: 3%;
+  width: 80%;
+  background-color: #139DEA;
+}
+.chatsTitle{
+  margin-left: 5%;
+}
+.logoutButton{
+  background-color: #139DEA;
 }
