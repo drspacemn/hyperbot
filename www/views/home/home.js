@@ -8,10 +8,6 @@ angular.module('App').controller('homeController', function($scope, $rootScope, 
 	groupsRef.on("value", function(snapshot) {
     $scope.groups = [];
 		let data = snapshot.val();
-      // if(data === undefined)
-      //   $timeout(function() {
-      //
-      //   },1000)
 		for (var key in data) {
       let obj = {};
       obj.delete = function(groupId){
@@ -27,6 +23,8 @@ angular.module('App').controller('homeController', function($scope, $rootScope, 
 		}
     $rootScope.$$phase || $scope.$apply()
 	})
+
+  
 	$scope.logOut = function() {
 		Auth.logout();
 		$location.path("/login");

@@ -2,7 +2,7 @@
 angular.module('App', ['ionic', 'ngStorage', 'ngCordova', 'firebase', 'pascalprecht.translate', 'ngMessages'])
 	.config(function($stateProvider, $urlRouterProvider, $translateProvider, $translateStaticFilesLoaderProvider) {
 		$translateProvider.preferredLanguage('en');
-
+		$translateProvider.useSanitizeValueStrategy('sanitize');
 		$translateProvider.useStaticFilesLoader({
 			prefix: '/langs/lang-',
 			suffix: '.json'
