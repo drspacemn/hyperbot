@@ -11,7 +11,9 @@ angular.module('App').controller('homeController', function($scope, $state, $cor
 		for (var key in data) {
       let obj = {};
       data[key].members.forEach(function(member) {
-        if(member.user_id == userId){
+        console.log('####################################################');
+        console.log(member);
+        if(member.id == userId){
           obj.key = key;
           obj.groupData = data[key];
           $scope.groups.push(obj)
