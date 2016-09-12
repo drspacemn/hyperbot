@@ -12,10 +12,6 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
 		user: {},
 
     login: function(user) {
-
-      // usersRef.child().update({
-      //   'last_login': new Date().toString()
-      // });
       return auth.$signInWithEmailAndPassword(
         user.email, user.password
       );
@@ -61,6 +57,7 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
       //     }
       // })
       $localStorage.uid = '';
+      $localStorage.email = '';
       auth.$signOut();
 			$log.log("Usuario Sale.");
 		},
