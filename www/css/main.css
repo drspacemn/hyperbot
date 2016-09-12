@@ -368,3 +368,7 @@ a{
 	justify-content: center;
 	align-items: center;
 }
+
+.groupSearch {
+	margin: 0;
+}
