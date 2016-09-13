@@ -24,12 +24,12 @@
 			<div class="row bot">
 			  <div class="relative  col col-50"><div class="nodes bLefty">{{ bottomInit[0] }}</div>
 				<div class="messagez messBot" ng-repeat="message in bottom[0].userMessages" ng-show="replayState">
-					<span class="messageSpan messageNode" ng-show="$index > bottom[0].userMessages.length - 3">{{message.text}}</span>
+					<span class="messageSpan messageNode special" ng-show="$index > bottom[0].userMessages.length - 3">{{message.text}}</span>
 				</div>
 			</div>
 			  <div class="relative  col col-50 right"><div class="nodes bRighty">{{ bottomInit[1] }}</div>
 				<div class="messagez messBot" ng-repeat="message in bottom[1].userMessages" ng-show="replayState">
-					<span class="messageSpan messageNode " ng-show="$index > bottom[1].userMessages.length - 3">{{message.text}}</span>
+					<span class="messageSpan messageNode special" ng-show="$index > bottom[1].userMessages.length - 3">{{message.text}}</span>
 				</div>
 			</div>
 			</div>
