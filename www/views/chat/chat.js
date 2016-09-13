@@ -18,8 +18,6 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 	})
 	ref.child("groups").child(chatid).on("value", function(snapshot){
 		var snap = snapshot.val();
-		console.log(snap);
-		console.log(snap.group_name);
 		$scope.groupNameOnChat = snap.group_name;
 	})
 
@@ -27,7 +25,6 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 		$scope.messages = [];
 		var snap = snapshot.val();
 		for (var key in snap) {
-			console.log(snap[key].user_id);
 			$scope.messages.push(snap[key])
 		}
 
@@ -46,7 +43,7 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 
 			alternate = !alternate;
       var unixdate = Math.floor(Date.now() / 1000);
-      
+
 			var obj = {}
 			obj.text = $scope.data.message;
 			obj.sent = unixdate.toString();
