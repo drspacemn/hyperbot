@@ -10,24 +10,27 @@ angular.module('App').controller('intervalController', function ($scope, $stateP
 		$scope.groupNameOnChat = snap.group_name;
 	})
 
+
   getUserName = function (user_id) {
+    var concat;
     ref.child('users').once('value', function(users) {
       let firstSlice;
       let lastSlice;
-      var concat;
+
       var usersPlus = users.val();
       for (var user in usersPlus) {
         if(usersPlus[user].id == user_id){
           firstSlice = usersPlus[user].first_name.slice(0,1);
           lastSlice = usersPlus[user].last_name.slice(0,1);
           concat = `${firstSlice}${lastSlice}`
-          return concat
+
         }else{
-          return null
+          // console.log('usersers ');
         }
       }
 
     })
+    return concat
   }
 
 $scope.intervalObject = {};
@@ -43,14 +46,15 @@ $scope.intervalObject = {};
         scopeQuad.push([hour,timeStamp,readableObject[message].text,readableObject[message].user_id]);
       }
 
-
       for (var i = 0; i < scopeQuad.length; i++) {
         let newArray = [];
         newArray.push(scopeQuad[i][1],scopeQuad[i][2],scopeQuad[i][3]);
         $scope.intervalObject[scopeQuad[i][0]] = newArray
-        console.log($scope.intervalObject);
-        newArray.push(getUserName(scopeQuad[i][3]));
-        cosole.log(userName);
+        // console.log($scope.intervalObject);
+
+        var userName = getUserName(scopeQuad[i][3]);
+        // newArray.push(getUserName(scopeQuad[i][3]));
+        // cosole.log(userName);
       }
 
 
