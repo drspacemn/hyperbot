@@ -41,6 +41,7 @@ $scope.intervalObject = {};
         let dateThat = new Date(timeStamp*1000);
         let hour = dateThat.getHours();
         scopeQuad.push([hour,timeStamp,readableObject[message].text,readableObject[message].user_id]);
+				console.log(scopeQuad);
       }
 
 
