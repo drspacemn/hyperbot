@@ -52,17 +52,10 @@ $scope.intervalObject = {};
         let newArray = [];
         newArray.push(scopeQuad[i][1],scopeQuad[i][2],scopeQuad[i][3]);
         $scope.intervalObject[scopeQuad[i][0]] = newArray
-<<<<<<< HEAD
-        // console.log($scope.intervalObject);
 
-        var userName = getUserName(scopeQuad[i][3]);
-        // newArray.push(getUserName(scopeQuad[i][3]));
-        // cosole.log(userName);
-=======
         console.log($scope.intervalObject);
         newArray.push(getUserName(scopeQuad[i][3]));
         console.log(userName);
->>>>>>> f1cdbc5b87d3fdaefd2a3a5ce2323736de8df4e5
       }
 
 
