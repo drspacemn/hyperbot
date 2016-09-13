@@ -23,7 +23,7 @@ angular.module('App').controller('createController', function ($scope,  $firebas
 	}
 	$scope.view.remove = function(friend){
 		// $scope.view.newGroup.splice(index, 1);
-		console.log(friend);
+		// console.log(friend);
 	}
 	var groupsRef = firebase.database().ref().child('groups');
 
@@ -37,7 +37,7 @@ angular.module('App').controller('createController', function ($scope,  $firebas
 				group.members.push(usersRef.child(userId))
 			let obj = {};
 			obj[val.key] = val.userData;
-			console.log(val.userData);
+			// console.log(val.userData);
 			group.members.push(val.userData);
 		})
 
