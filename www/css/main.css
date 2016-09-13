@@ -340,7 +340,7 @@ a{
   box-shadow: 2px 2px 4px #888;
 }
 .bot .messageNode{
-	margin-top: 220px;
+	margin-top: 33px;
 }
 
 .row {
@@ -356,12 +356,18 @@ a{
 }
 .relative {
 	position: relative;
-	}
+}
 .tLefty{
+	background: rgba(108, 20, 110, 0.6) !important;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
+
+.selfieNode {
+	background: purple !important;
+}
+
 .tRighty{
 	position: absolute;
 	top: 0;
@@ -382,13 +388,14 @@ a{
 .nodes {
 	background: #149CEB;
 	border-radius: 100%;
-	width: 25px;
-	height: 25px;
+	width: 30px;
+	height: 30px;
 	color: white;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
 
 .groupSearch {
 	margin: 0;
