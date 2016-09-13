@@ -39,6 +39,7 @@ angular.module('App').controller('chatNodeController', function ($scope, $stateP
 				var obj = {};
 				obj.userData = snap.members[i];
 				obj.userMessages = [];
+
 				$scope.users.push(obj);
 				var first = snap.members[i].first_name[0];
 				var second = snap.members[i].last_name[0];
