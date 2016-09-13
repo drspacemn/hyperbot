@@ -10,6 +10,7 @@
           </label>
           <ul ng-repeat="group in groups | filter:view.searchChats">
             <li class="groupList">
+              <a href="#/chat/{{group.key}}/interval"><i ng-click="" id="foo" class="iconGroupSizeLeft icon ion-clipboard"></i></a>
               <a href="#/chat/{{group.key}}">{{ group.groupData.group_name }}</a>
               <i ng-click="group.delete(group.key)" id="foo" class="iconGroupSize icon ion-close-round"></i>
             </li>

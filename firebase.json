@@ -1,0 +1,13 @@
+{
+  "storage": {
+   "rules": ""
+ },
+ "hosting": {
+   "public": "./www",
+   "ignore": [
+     "firebase.json",
+     "database-rules.json",
+     "storage.rules"
+   ]
+ }
+}

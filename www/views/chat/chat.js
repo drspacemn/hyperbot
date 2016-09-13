@@ -7,7 +7,6 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 	var email = $localStorage.email
 	$scope.messages = [];
 
-	console.log();
   var chatid = $stateParams.chatId;
 
   var ref = firebase.database().ref();
@@ -46,12 +45,11 @@ angular.module('App').controller('chatController', function($scope, $stateParams
 		if ($scope.data.message) {
 
 			alternate = !alternate;
-
-			var d = new Date();
-			d = d.toUTCString();
+      var unixdate = Math.floor(Date.now() / 1000);
+      
 			var obj = {}
 			obj.text = $scope.data.message;
-			obj.sent = d;
+			obj.sent = unixdate.toString();
       obj.user_id = userId;
 			obj.email = email;
 			ref.child("groups").child(chatid).child('messages').push(obj);
