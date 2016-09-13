@@ -1,4 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
+<allow-intent href="*.firebaseio.com" />
+<allow-intent href="auth.firebase.com" />
 <widget id="com.ionicframework.clique315723" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>clique</name>
     <description>
