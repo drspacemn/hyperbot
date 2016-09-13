@@ -21,6 +21,7 @@ angular.module('App').controller('intervalController', function ($scope, $stateP
           firstSlice = usersPlus[user].first_name.slice(0,1);
           lastSlice = usersPlus[user].last_name.slice(0,1);
           concat = `${firstSlice}${lastSlice}`
+          console.log(concat);
           return concat
         }else{
           return null
@@ -51,7 +52,7 @@ $scope.intervalObject = {};
         $scope.intervalObject[scopeQuad[i][0]] = newArray
         console.log($scope.intervalObject);
         newArray.push(getUserName(scopeQuad[i][3]));
-        cosole.log(userName);
+        console.log(userName);
       }
 
 
