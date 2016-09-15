@@ -4,16 +4,16 @@ angular.module('App').controller('intervalController', function ($scope, $stateP
   var ref = firebase.database().ref();
   var userId = $localStorage.uid;
   var chatid = $stateParams.chatId;
+  var monthArray = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
 	ref.child("groups").child(chatid).on("value", function(snapshot){
 		var snap = snapshot.val();
 		$scope.groupNameOnChat = snap.group_name;
 	})
 
-
   getUserName = function (user_id) {
     var concat;
-    ref.child('users').once('value', function(users) {
+    ref.child('users').once('value').then(function(users) {
       let firstSlice;
       let lastSlice;
 
@@ -23,15 +23,11 @@ angular.module('App').controller('intervalController', function ($scope, $stateP
           firstSlice = usersPlus[user].first_name.slice(0,1);
           lastSlice = usersPlus[user].last_name.slice(0,1);
           concat = `${firstSlice}${lastSlice}`
-
+          console.log(concat);
           return concat
-        }else{
-          // console.log('usersers ');
         }
       }
-
     })
-    return concat
   }
 
 $scope.intervalObject = {};
@@ -43,30 +39,16 @@ $scope.intervalObject = {};
         // console.log(readableObject[message]);
         let timeStamp = readableObject[message].sent
         let dateThat = new Date(timeStamp*1000);
+        console.log(dateThat);
         let hour = dateThat.getHours();
         scopeQuad.push([hour,timeStamp,readableObject[message].text,readableObject[message].user_id]);
-
       }
-
-      for (var i = 0; i < scopeQuad.length; i++) {
-        let newArray = [];
-        newArray.push(scopeQuad[i][1],scopeQuad[i][2],scopeQuad[i][3]);
-        $scope.intervalObject[scopeQuad[i][0]] = newArray
-
-        console.log($scope.intervalObject);
-
-        newArray.push(getUserName(scopeQuad[i][3]));
-        console.log(userName);
-      }
-
-
       // console.log($scope.intervalObject);
 
     })
   }
 
 makeIntervalArray();
-
 
 
 });
