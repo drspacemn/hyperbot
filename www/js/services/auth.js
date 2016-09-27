@@ -1,91 +1,32 @@
-angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $firebaseArray, $firebaseObject, $translate, Utils, $localStorage) {
-
-	//var ref = new Firebase(FURL);
-
+angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $firebaseArray, $cordovaOauth, $ionicPopup, $firebaseObject, $state, $translate, Utils, $localStorage) {
 	firebase.initializeApp(FURL);
-	//var auth = $firebaseAuth(ref);
+
 	var ref = firebase.database().ref();
-	//var auth = $firebaseObject(ref);
+
 	var auth = $firebaseAuth();
 
 	var Auth = {
 		user: {},
 
-    login: function(user) {
-      return auth.$signInWithEmailAndPassword(
-        user.email, user.password
-      );
-    },
 
-		createProfile: function(uid, user) {
-			var profile = {
-				id: uid,
-				email: user.email,
-				registered_in: Date(),
-				first_name: user.fName,
-				last_name: user.lName,
-        last_login: Date()
-			};
-
-			var messagesRef = $firebaseArray(firebase.database().ref().child("users"));
-			messagesRef.$add(profile);
-			$log.log("User Saved");
-		},
-
-
-		register: function(user) {
+		register: function(user){
 			return auth.$createUserWithEmailAndPassword(user.email, user.password)
-				.then(function(firebaseUser) {
-					$log.log("User created with uid: " + firebaseUser.uid);
-					Auth.createProfile(firebaseUser.uid, user);
+				.then((firebaseUser)=>{
+					console.log("uid ", firebaseUser.uid);
+				}).catch((error)=>{
+					console.log(error);
 				})
-				.catch(function(error) {
-					$log.log(error);
-				});
 		},
-
-    logout: function() {
-      // var newLogin = Date().toString();
-      // var usersRef = firebase.database().ref().child('users');
-      // usersRef.on("value", function(snapshot){
-      //   var userTable = snapshot.val();
-      //   for (var key in userTable) {
-      //     if (userTable[key].id == $localStorage.profile) {
-      //         usersRef.child(key).update({'last_login' : newLogin})
-      //
-      //       }
-      //     }
-      // })
-      $localStorage.uid = '';
-      $localStorage.email = '';
-      auth.$signOut();
-			$log.log("Usuario Sale.");
+		login: function(user){
+			return auth.$signInWithEmailAndPassword(user.email, user.password);
 		},
-
-		resetpassword: function(email) {
-			return auth.$sendPasswordResetEmail(
-				email
-			).then(function() {
-				Utils.alertshow($translate.instant('MESSAGES.title_1'), $translate.instant('MESSAGES.success_message'));
-				//console.log("Password reset email sent successfully!");
-			}).catch(function(error) {
-				Utils.errMessage(error);
-				//console.error("Error: ", error.message);
-			});
-		},
-
-		changePassword: function(user) {
-			return auth.$changePassword({
-				email: user.email,
-				oldPassword: user.oldPass,
-				newPassword: user.newPass
-			});
-		},
-
-		signInWithProvider: function(provider) {
-			return Auth.signInWithPopup('google');
+		logout: function(){
+			$localStorage.uid = '';
+			$localStorage.email = '';
+			auth.$signOut()
+			$state.go("login");
 		}
-	};
+	}
 	return Auth;
 
 });

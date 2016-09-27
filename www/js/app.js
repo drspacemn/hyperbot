@@ -1,72 +1,83 @@
 'Use Strict';
 angular.module('App', ['ionic', 'ngStorage', 'ngCordova', 'firebase', 'pascalprecht.translate', 'ngMessages'])
 	.config(function($stateProvider, $urlRouterProvider, $translateProvider, $translateStaticFilesLoaderProvider) {
-		$translateProvider.preferredLanguage('en');
-		$translateProvider.useSanitizeValueStrategy('sanitize');
-		$translateProvider.useStaticFilesLoader({
-			prefix: '/langs/lang-',
-			suffix: '.json'
-		});
+
 
 		$stateProvider
-			.state('login', {
-				url: '/login',
-				templateUrl: 'views/login/login.html',
-				controller: 'loginController'
-			})
-			.state('forgot', {
-				url: '/forgot',
-				templateUrl: 'views/forgot/forgot.html',
-				controller: 'forgotController'
-			})
-			.state('register', {
-				url: '/register',
-				templateUrl: 'views/register/register.html',
-				controller: 'registerController'
-			})
-			.state('home', {
-				url: '/home',
-				templateUrl: 'views/home/home.html',
-				controller: 'homeController'
-			})
-			.state('profile', {
-				url: '/profile',
-				templateUrl: 'views/profile/profile.html',
-				controller: 'profileController'
-			})
-			.state('chatNode', {
-				url: '/chatNode',
-				templateUrl: 'views/chatNode/chatNode.html',
-				controller: 'chatNodeController'
-			})
-      .state('create',{
-        url:'/create',
-        templateUrl: 'views/create/create.html',
-        controller: 'createController'
-      })
-      .state('settings',{
-        url:'/settings',
-        templateUrl: 'views/settings/settings.html',
-        controller: 'settingsController'
-      })
-			.state('/chat/:chatId',{
-				url:'/chat/:chatId',
-        templateUrl: 'views/chat/chat.html',
-        controller: 'chatController'
-			})
-			.state('/chat/:chatId/interval',{
-				url:'/chat/:chatId/interval',
-				templateUrl: 'views/interval/interval.html',
-				controller: 'intervalController'
-			})
-		$urlRouterProvider.otherwise("/login");
-	})
+		.state('home', {
+			url: '/page1',
+			templateUrl: 'templates/home.html',
+			controller: 'homeCtrl'
+		})
+
+		.state('menu.iPhoneHyperlapse', {
+			url: '/iphonehl',
+			views: {
+				'side-menu21': {
+					templateUrl: 'templates/iPhoneHyperlapse.html',
+					controller: 'iPhoneHyperlapseCtrl'
+				}
+			}
+		})
+
+		.state('menu.goProHyperlapse', {
+			url: '/goprohl',
+			views: {
+				'side-menu21': {
+					templateUrl: 'templates/goProHyperlapse.html',
+					controller: 'goProHyperlapseCtrl'
+				}
+			}
+		})
+
+		.state('menu.video', {
+			url: '/video',
+			views: {
+				'side-menu21': {
+					templateUrl: 'templates/video.html',
+					controller: 'videoCtrl'
+				}
+			}
+		})
+
+		.state('menu.control', {
+			url: '/control',
+			views: {
+				'side-menu21': {
+					templateUrl: 'templates/control.html',
+					controller: 'controlCtrl'
+				}
+			}
+		})
+
+		.state('menu', {
+			url: '/side-menu21',
+			templateUrl: 'templates/menu.html',
+			controller: 'menuCtrl'
+		})
+
+		.state('login', {
+			url: '/login',
+			templateUrl: 'templates/login.html',
+			controller: 'loginCtrl'
+		})
+
+		.state('signup', {
+			url: '/signup',
+			templateUrl: 'templates/signup.html',
+			controller: 'signupCtrl'
+		})
+
+		$urlRouterProvider.otherwise('/login')
+
+		})
+
 
 .constant('FURL', {
-		apiKey: "AIzaSyDpcHjxA_n9ZS1PPSTbSUnSI2PdwkbVu64",
-		authDomain: "clique-82cee.firebaseapp.com",
-		databaseURL: "https://clique-82cee.firebaseio.com",
-		storageBucket: "clique-82cee.appspot.com",
+		apiKey: "AIzaSyCbHiDYAmwbrQSfSYGU62_L7jt55o4RDvI",
+		authDomain: "hyperbot-d6494.firebaseapp.com",
+		databaseURL: "https://hyperbot-d6494.firebaseio.com",
+		storageBucket: "hyperbot-d6494.appspot.com",
 	})
 	.run(function($ionicPlatform) {
 		$ionicPlatform.ready(function(FURL) {
