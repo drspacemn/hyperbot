@@ -3,22 +3,22 @@
         <form id="goProHyperlapse-form6" class="list">
             <label class="item item-input" id="goProHyperlapse-input14">
                 <span class="input-label">Time</span>
-                <input type="number" placeholder="in minutes">
+                <input type="number" placeholder="in minutes" ng-model="goPro.time">
             </label>
             <label class="item item-input" id="goProHyperlapse-input17">
                 <span class="input-label">FPS</span>
-                <input type="number" placeholder="frames per second">
+                <input type="number" placeholder="frames per second" ng-model="goPro.fps">
             </label>
             <label class="item item-input" id="goProHyperlapse-input15">
                 <span class="input-label">Distance</span>
-                <input type="number" placeholder="in feet.inches">
+                <input type="number" placeholder="in feet.inches" ng-model="goPro.dist">
             </label>
             <label class="item item-input" id="goProHyperlapse-input16">
                 <span class="input-label">Curve</span>
-                <input type="number" placeholder="in degrees">
+                <input type="number" placeholder="in degrees" ng-model="goPro.curve">
             </label>
         </form>
-        <button id="goProHyperlapse-button9" class="button button-assertive  button-block">let's get hyper</button>
+        <button id="goProHyperlapse-button9" class="button button-assertive  button-block" ng-click="sendProStats(goPro)">let's get hyper</button>
 				<div class="spacer" style="width: 300px; height: 55px;"></div>
 
 				<div>

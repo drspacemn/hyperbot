@@ -10,12 +10,8 @@ angular.module('App').factory('Auth', function(FURL, $log, $firebaseAuth, $fireb
 
 
 		register: function(user){
-			return auth.$createUserWithEmailAndPassword(user.email, user.password)
-				.then((firebaseUser)=>{
-					console.log("uid ", firebaseUser.uid);
-				}).catch((error)=>{
-					console.log(error);
-				})
+			return auth.$createUserWithEmailAndPassword(user.email, user.password);
+
 		},
 		login: function(user){
 			return auth.$signInWithEmailAndPassword(user.email, user.password);

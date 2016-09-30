@@ -2,17 +2,17 @@
     <ion-content padding="true" class="has-header">
         <form id="signup-form3" class="list">
             <ion-list id="signup-list3">
-            
+
                 <label class="item item-input" id="signup-input6">
                     <span class="input-label">Email</span>
-                    <input type="email" ng-model="user.email" placeholder="">
+                    <input type="email" ng-model="newUser.email" placeholder="">
                 </label>
                 <label class="item item-input" id="signup-input7">
                     <span class="input-label">Password</span>
-                    <input type="password" ng-model="user.password" placeholder="">
+                    <input type="password" ng-model="newUser.password" placeholder="">
                 </label>
             </ion-list>
-            <button id="signup-button5" class="button button-stable  button-block" ng-click="registerUser(user)">Sign up</button>
+            <button id="signup-button5" class="button button-stable  button-block" ng-click="registerUser(newUser)">Sign up</button>
         </form>
     </ion-content>
 </ion-view>

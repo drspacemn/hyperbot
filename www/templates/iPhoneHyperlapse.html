@@ -3,20 +3,20 @@
         <form id="iPhoneHyperlapse-form4" class="list">
             <label class="item item-input" id="iPhoneHyperlapse-input8">
                 <span class="input-label">Time</span>
-                <input type="number" placeholder="in minutes">
+                <input type="number" placeholder="in minutes" ng-model="stats.iPhoneTime">
             </label>
             <label class="item item-input" id="iPhoneHyperlapse-input9">
                 <span class="input-label">Distance</span>
-                <input type="number" placeholder="in feet'inches&quot;">
+                <input type="number" placeholder="in feet'inches&quot;" ng-model="stats.iPhoneDist">
             </label>
             <label class="item item-input" id="iPhoneHyperlapse-input10">
                 <span class="input-label">Curve</span>
-                <input type="number" placeholder="in degrees">
+                <input type="number" placeholder="in degrees" ng-model="stats.iPhoneCurve">
             </label>
         </form>
 				<div class="spacer" style="width: 300px; height: 55px;"></div>
 
-        <button id="iPhoneHyperlapse-button7" ng-click="test()" class="button button-assertive  button-block">let's get hyper</button>
+        <button id="iPhoneHyperlapse-button7" ng-click="sendStats(stats)" class="button button-assertive  button-block">let's get hyper</button>
 				<div class="spacer" style="width: 300px; height: 55px;"></div>
 			  <div>
             <img src="img/robot.png" width="50%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
