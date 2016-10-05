@@ -21,7 +21,15 @@ function ($scope, $stateParams, $localStorage, FURL, $ionicPopup, $timeout, $int
 				subTitle: 'seconds left in HyperLapse',
 				scope: $scope,
 				buttons: [
-				{ text: 'Exit' }
+				{ text: 'Exit',
+				type: 'button-default',
+				onTap: function(e) {
+					// e.preventDefault() will stop the popup from closing when tapped.
+					if($scope.timeleft !== 'HyperLapse Complete!'){
+						e.preventDefault();
+						}
+					}
+				 }
 				]
 			});
 

@@ -1,41 +1,49 @@
-angular.module('App').controller('iPhoneHyperlapseCtrl', ['$scope', '$stateParams','$cordovaCapture', "$localStorage", "Auth", "FURL",
-function ($scope, $stateParams, $cordovaCapture, $localStorage, Auth, FURL) {
+angular.module('App').controller('iPhoneHyperlapseCtrl', ['$scope', '$stateParams','$cordovaCapture', "$localStorage", "Auth", "FURL", '$interval', '$timeout', '$ionicPopup',
+function ($scope, $stateParams, $cordovaCapture, $localStorage, Auth, FURL, $interval, $timeout, $ionicPopup) {
 
 	$scope.timeleft;
+	$scope.wait = false;
 
 	var refIphone = firebase.database().ref().child('iPhoneHyper');
 	
-	$scope.sendProStats = function(stats){
+	$scope.sendStats = function(stats){
 		var obj = stats;
 		obj.uid = $localStorage.uid;
 		obj.isDone = false;
 		refIphone.push(obj);
-	}
-	refIphone.on('child_changed', function(childSnapshot, prevChildKey){
-		if(childSnapshot.val().isDone === 'inProgress'){
-		$scope.timeleft = childSnapshot.val().time * 60;
+		$scope.timeleft = 10;
 			var test = $interval(countDown, 1000);
 			test;
-		 var myPopup = $ionicPopup.show({
+			var timer = stats.iPhoneTime * 60000;
+			waitTime(timer);
+		 	var myPopup = $ionicPopup.show({
 				template: '<div style="text-align: center;"><h1>{{ timeleft }}<h1></div>',
-				title: 'Gettin Hyper',
-				subTitle: 'seconds left in HyperLapse',
-				scope: $scope,
-				buttons: [
-				{ text: 'Exit' }
-				]
+				title: 'Begin your iPhone TL',
+				subTitle: 'Hyperbot will start moving in:',
+				scope: $scope
 			});
 
 			myPopup.then(function(res) {
 				console.log('Tapped!', res);
 			});
+			refIphone.on('child_changed', function(snap){
+				if(snap.val().isDone === true){
+					myPopup.close();
+				}
+			})
 
 			$timeout(function() {
 				$interval.cancel(test);
-				$scope.timeleft = 'HyperLapse Complete!';
-			}, (childSnapshot.val().time * 60000));
-			};
-	})
+				$scope.timeleft = 'HyperBot is rolling';
+			}, 10000);
+	}
+	
+	function waitTime(time){
+		$interval(function(){
+			$scope.wait = true;
+		}, time)
+	}
+	
 	function countDown(){
 		$scope.timeleft -= 1;
 	}
