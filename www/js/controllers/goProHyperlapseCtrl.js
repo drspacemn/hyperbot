@@ -4,11 +4,23 @@ function ($scope, $stateParams, $localStorage, FURL, $ionicPopup, $timeout, $int
 
 	var refGo = firebase.database().ref().child('goProHyper');
 	
+	
+	
 	$scope.sendProStats = function(stats){
-		var obj = stats;
-		obj.uid = $localStorage.uid;
-		obj.isDone = false;
-		refGo.push(obj);
+		var confirmPopup = $ionicPopup.confirm({
+			title: 'Start GoPro TL',
+			template: 'Immediately after starting your GoPro, press OK'
+		});
+		confirmPopup.then(function(res) {
+			if(res) {
+				var obj = stats;
+				obj.uid = $localStorage.uid;
+				obj.isDone = false;
+				refGo.push(obj);
+			} else {
+				console.log('TL abort');
+			}
+		});
 	}
 	refGo.on('child_changed', function(childSnapshot, prevChildKey){
 		if(childSnapshot.val().isDone === 'inProgress'){

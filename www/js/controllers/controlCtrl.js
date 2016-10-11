@@ -1,5 +1,5 @@
-angular.module('App').controller('controlCtrl', ['$scope', '$ionicPlatform', '$stateParams', '$log', '$cordovaDeviceMotion', 'FURL',
-function ($scope, $ionicPlatform, $stateParams, $log, $cordovaDeviceMotion, FURL) {
+angular.module('App').controller('controlCtrl', ['$scope', '$ionicPlatform', '$stateParams', '$log', '$cordovaDeviceMotion', 'FURL', '$ionicPopup',
+function ($scope, $ionicPlatform, $stateParams, $log, $cordovaDeviceMotion, FURL, $ionicPopup) {
    var ref = firebase.database().ref();
 
     $scope.options = { 
@@ -26,18 +26,24 @@ function ($scope, $ionicPlatform, $stateParams, $log, $cordovaDeviceMotion, FURL
     // Watcher object
     $scope.watch = null;
  
+ 
     $ionicPlatform.ready(function() {
  
-        $scope.startWatching = function() {     
- 
-            $scope.watch = $cordovaDeviceMotion.watchAcceleration($scope.options);
+        $scope.startWatching = function() {   
+        var confirmPopup = $ionicPopup.confirm({
+			title: 'Tilt and Party',
+			template: 'Tilt your device to landscape and press OK'
+		});
+		confirmPopup.then(function(res) {
+			if(res) {
+                 $scope.watch = $cordovaDeviceMotion.watchAcceleration($scope.options);
  
             $scope.watch.then(null, function(error) {
                 console.log('Error');
             },function(result) {
  
-                ref.child('control').remove();
-                ref.child('control').push({x: result.x, y: result.y, z: result.z})
+                ref.child('control').push({x: Math.floor(result.x), y: Math.floor(result.y), z: Math.floor(result.z)})
+                ref.child('control').remove();                
                 $scope.measurements.x = result.x;
                 $scope.measurements.y = result.y;
                 $scope.measurements.z = result.z;
@@ -46,12 +52,19 @@ function ($scope, $ionicPlatform, $stateParams, $log, $cordovaDeviceMotion, FURL
                 // Detecta shake  
                 $scope.detectShake(result);  
  
-            });     
+            });  
+				
+			} else {
+				console.log('TL abort');
+			}
+		});         
         };      
  
         // Stop watching method
         $scope.stopWatching = function() {  
-            $scope.watch.clearWatch();
+            $scope.watch.clearWatch();            
+            ref.child('control').push({x: 'kill engines'})
+            ref.child('control').remove();
         }       
  
         // Detect shake method      

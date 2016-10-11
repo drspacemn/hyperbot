@@ -1,19 +1,20 @@
-<ion-view title="Login" id="page5">
+<ion-view title="Login" id="page5" hide-nav-bar="true">
     <ion-content padding="true" class="has-header">
+      <div class="spacer" style="height: 40px;"></div>
         <form id="login-form2" class="list">
             <div class="spacer" style="height: 40px;"></div>
             <ion-list id="login-list2">
                 <label class="item item-input" id="login-input3">
-                    <span class="input-label">Email</span>
+                    <span class="input-label" style="color: white; font-size: 1.5em;">Email</span>
                     <input type="email" placeholder="" ng-model="user.email">
                 </label>
                 <label class="item item-input" id="login-input4">
-                    <span class="input-label">Password</span>
+                    <span class="input-label" style="color: white; font-size: 1.5em;">Password</span>
                     <input type="password" placeholder="" ng-model="user.password">
                 </label>
             </ion-list>
             <div class="spacer" style="height: 40px;"></div>
-            <button id="login-button3" class="button button-stable  button-block" ng-click="loginUser(user)">Log in</button>
+            <button id="login-button3" class="button button-calm  button-block" ng-click="loginUser(user)">Log in</button>
 
             <a href="#/signup" id="login-button4" class="button button-positive  button-block button-clear">Or create an account</a>
         </form>

@@ -1,28 +1,23 @@
-<ion-view title="GoPro Hyperlapse" id="page8" style="background-color:#911D4F;">
+<ion-view title="GoPro Hyperlapse" id="page8">
     <ion-content padding="true" class="has-header">
+        <div class="spacer" style="width: 300px; height: 55px;"></div>
         <form id="goProHyperlapse-form6" class="list">
             <label class="item item-input" id="goProHyperlapse-input14">
-                <span class="input-label">Time</span>
+                <span class="input-label other">Time <i class="icon ion-clock"></i></span>
                 <input type="number" placeholder="in minutes" ng-model="goPro.time">
             </label>
             <label class="item item-input" id="goProHyperlapse-input17">
-                <span class="input-label">Interval</span>
-                <input type="number" placeholder="interval in seconds" ng-model="goPro.interval">
+                <span class="input-label other">Interval <i class="icon ion-aperture"></i></span>
+                <input type="number" placeholder="2 seconds or longer" ng-model="goPro.interval">
             </label>
-            <label class="item item-input" id="goProHyperlapse-input15">
-                <span class="input-label">Distance</span>
-                <input type="number" placeholder="in inches" ng-model="goPro.dist">
-            </label>
+           
             <label class="item item-input" id="goProHyperlapse-input16">
-                <span class="input-label">Curve</span>
+                <span class="input-label other">Curve <i class="icon ion-load-c"></i></span>
                 <input type="number" placeholder="in degrees" ng-model="goPro.curve">
             </label>
         </form>
-        <button id="goProHyperlapse-button9" class="button button-assertive  button-block" ng-click="sendProStats(goPro)">let's get hyper</button>
+        				<div class="spacer" style="width: 300px; height: 55px;"></div>
+        <button id="goProHyperlapse-button9" class="button button-dark  button-block" ng-click="sendProStats(goPro)">let's get hyper</button>
 				<div class="spacer" style="width: 300px; height: 55px;"></div>
-
-				<div>
-            <img src="img/robot.png" width="50%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
-        </div>
     </ion-content>
 </ion-view>
